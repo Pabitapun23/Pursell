@@ -1,0 +1,101 @@
+.navbar-mainbg {
+    background: #FBF9F9;
+    box-shadow: 1px 4px 2px #F87070;
+    padding: 0px;
+    border-bottom:2px solid #F53535;
+  
+  }
+  
+  
+  
+  #navbarSupportedContent li {
+    list-style-type: none;
+    float: left;
+   
+  }
+  
+  #navbarSupportedContent ul li a { /* HAMRO ICONS HARU NAVBAR KO */
+    padding: 2px;
+  
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-expand-custom {
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-expand-custom .navbar-nav {
+      -ms-flex-direction: row;
+      flex-direction: row;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-expand-custom .navbar-toggler {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .navbar-expand-custom .navbar-collapse {
+      display: -ms-flexbox!important;
+      display: flex!important;
+      -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    #navbarSupportedContent ul li a {
+      padding: 12px 30px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .hori-selector {
+      margin-top: 0px;
+      margin-left: 10px;
+      border-radius: 0;
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .hori-selector .left, .hori-selector .right {
+      right: 10px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .hori-selector .left {
+      top: -25px;
+      left: auto;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .hori-selector .right {
+      bottom: -25px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .hori-selector .left:before {
+      left: -25px;
+      top: -25px;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .hori-selector .right:before {
+      bottom: -25px;
+      left: -25px;
+    }
+  }
+  
