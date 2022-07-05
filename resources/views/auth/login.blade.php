@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,32 +18,7 @@
 
 
 <body>
-    <!-- navbar -->
-    <!-- <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="Images/Logo.jpg" style="width: 80px; height: 60px" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profilePage.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active " aria-current="page" href="loginPage.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="registerPage.html">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-    <!-- end of navbar -->
+
 
     <!-- login form  my-4 mx-5 -->
     <section class="Form justify-content-center">
@@ -64,20 +42,20 @@
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-row pt-4 mx-2">
-                                            <div>
-                                                <div class="input-group flex-nowrap">
-                                                    <span class="input-group-text bg-white" id="addon-wrapping">
-                                                        <i class="bi bi-envelope-fill text-danger"></i>
-                                                    </span>
-                                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" @if(Cookie::has('useremail')) value="{{Cookie::get('useremail')}}" @endif placeholder="Your Email" aria-label="Email" aria-describedby="addon-wrapping">
 
-                                                </div>
-                                                @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                            <div class="input-group flex-nowrap">
+                                                <span class="input-group-text bg-white" id="addon-wrapping">
+                                                    <i class="bi bi-envelope-fill text-danger"></i>
                                                 </span>
-                                                @enderror
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" @if(Cookie::has('useremail')) value="{{Cookie::get('useremail')}}" @endif placeholder="Your Email" aria-label="Email" aria-describedby="addon-wrapping">
+
                                             </div>
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+
                                         </div>
                                         <div class="form-row pt-2 mx-2">
                                             <div class="input-group flex-nowrap">
@@ -126,3 +104,4 @@
 
 
 </html>
+@endsection

@@ -1,9 +1,23 @@
+/* *{
+  overflow-x: hidden;
+
+
+
+} */
 .container{
 
     background-color: rgb(251, 251, 252);  
     width: max-content;
+    
    
 }
+.container-fluid{
+  overflow-x: hidden;
+   
+
+}
+
+
 
 .row{
     
@@ -117,7 +131,7 @@ h3{
 .list{
 margin-left: -10px;
     padding-bottom:7px;
-border-bottom-style: ;
+
 font-style: italic;
 transition: all 0.3s;
 font-family:'Alegreya Sans SC';
@@ -162,7 +176,7 @@ ul{
 .search1{
     display: inline-block;
     border: none;
-    width: ;
+   
   margin-top: 20px;
    padding-bottom: 30px;
    transition: all 0.5s;
@@ -288,24 +302,8 @@ ul{
  .btn3:hover {
         transform: scale(1.5);
       }
-.cardprofile {
-    height: 80px;
-    width: 80px;
-        background-color: rgb(251, 251, 252);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-     
-    }
-.profile{
-    width: 60px;
-    height: 60px;
-    margin: auto;
-    margin-left: -5px;
 
 
-
-    }
 
 
 .adsphoto{
@@ -379,44 +377,7 @@ ul{
 
  }
 
- .home{
-    background-color: rgb(251, 251, 252);
-    border: none;
-    color: #F53535;
-    font-size: 19px;
-    cursor: pointer;
-    transition: all 0.5s;
- }
- .home:hover { 
-    transform: scale(1.2);
-  }
 
-
-.noti{
-    background-color: rgb(251, 251, 252);
-    border: none;
-    color: #F53535;
-    font-size: 19px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.noti:hover { 
-    transform: scale(1.2);
-  }
-
-.acc{
-    background-color: rgb(251, 251, 252);
-    border: none;
-    color: #F53535;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.acc:hover { 
-    transform: scale(1.2);
-  }
 
 .wrapper{
 
@@ -692,4 +653,21 @@ ul{
 
 .productslider:hover { 
   transform: scale(1.2);
+}
+.owl-carousel .nav-button {
+   
+    
+  cursor: pointer;
+  position: absolute;
+  top: 60px !important;
+}
+
+.owl-carousel .owl-prev {
+  left: -12px;
+}
+.owl-carousel .owl-next {
+  right: -12px;
+}
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+  display: block;
 }

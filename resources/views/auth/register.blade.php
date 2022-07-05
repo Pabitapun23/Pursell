@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,8 +55,8 @@
                                     <h1 class="form-title mt-4 ms-3">Sign Up</h1>
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
-                                        <div class=" form-row p-1 mx-3">
-                                            <div class="input-group flex-nowrap ">
+                                        <div class=" form p-1 mx-3">
+                                            <div class="input-group ">
                                                 <span class="input-group-text bg-white" id="addon-wrapping">
                                                     <i class="bi bi-person-fill text-danger"></i>
                                                 </span>
@@ -66,8 +69,8 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-row p-1 mx-3">
-                                            <div class="input-group flex-nowrap">
+                                        <div class="form p-1 mx-3">
+                                            <div class="input-group ">
                                                 <span class="input-group-text bg-white" id="addon-wrapping">
                                                     <i class="bi bi-envelope-fill text-danger"></i>
                                                 </span>
@@ -79,8 +82,8 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-row p-1 mx-3">
-                                            <div class="input-group flex-nowrap">
+                                        <div class="form p-1 mx-3">
+                                            <div class="input-group ">
                                                 <span class="input-group-text bg-white" id="addon-wrapping">
                                                     <i class="bi bi-telephone-fill text-danger"></i>
                                                 </span>
@@ -92,8 +95,8 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-row p-1 mx-3">
-                                            <div class="input-group flex-nowrap">
+                                        <div class="form p-1 mx-3">
+                                            <div class="input-group ">
                                                 <span class="input-group-text bg-white" id="addon-wrapping">
                                                     <i class="bi bi-lock-fill text-danger"></i>
                                                 </span>
@@ -105,8 +108,8 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-row p-1 mx-3">
-                                            <div class="input-group flex-nowrap">
+                                        <div class="form p-1 mx-3">
+                                            <div class="input-group">
                                                 <span class="input-group-text bg-white" id="addon-wrapping">
                                                     <i class="bi bi-lock-fill text-danger"></i>
                                                 </span>
@@ -136,3 +139,4 @@
 </body>
 
 </html>
+@endsection

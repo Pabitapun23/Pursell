@@ -1,0 +1,17 @@
+.owl-carousel .nav-button {
+   
+    
+    cursor: pointer;
+    position: absolute;
+    top: 60px !important;
+  }
+ 
+  .owl-carousel .owl-prev {
+    left: -12px;
+  }
+  .owl-carousel .owl-next {
+    right: -12px;
+  }
+  .owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled {
+    display: block;
+}

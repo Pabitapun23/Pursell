@@ -22,6 +22,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/slider', function () {
+    return view('slider');
+});
+Route::get('/addpost', function () {
+    return view('addpost');
+});
+
 // Route::middleware(['middleware' => 'PreventBackHistory'])->group(
 //     function () {
 //         Auth::routes();
