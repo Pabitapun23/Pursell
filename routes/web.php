@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SinglePostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,16 +22,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('');
 
-Route::get('/slider', function () {
-    return view('slider');
-});
-Route::get('/addpost', function () {
-    return view('addpost');
-});
+// Route::get('/singlepost/2', function () {
+//     return view('singlepost');
+// });
+
 
 // Route::middleware(['middleware' => 'PreventBackHistory'])->group(
 //     function () {
@@ -35,6 +37,13 @@ Route::get('/addpost', function () {
 //     }
 
 // );
+Route::get('/', [WelcomeController::class, 'displaypost'])->name('welcome');
+Route::get('postform', [PostController::class, 'index'])->name('postform');
+Route::post('subcat', [PostController::class, 'subCat'])->name('subcat');
+// Route::get('addpost', [PostController::class, 'addpost'])->name('addpost');
+Route::post('addpost', [PostController::class, 'addpost'])->name('addpost');
+
+Route::get('singlepost/{id}', [SinglePostController::class, 'singlepost'])->name('singlepost');
 
 Auth::routes(['verify' => true]);
 

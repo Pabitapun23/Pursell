@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/welcome.css">
 
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+
 
 
 
@@ -35,8 +35,7 @@
 
 <body>
 
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/responsiveactivenavbar.js"></script>
+
 
     <!--Nav sakkesi container suru kinaki nav le tanab dirathyo-->
 
@@ -50,22 +49,10 @@
                         <li class="list">
 
                             <div class="dropdown">
-                                <button class="dropbtn">Bikes</button>
-                                <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -65px; will-change: transform;">
-                                    <button class="dropbtn" style=" border-bottom: 2px solid black;"><a href="#">Honda</a></button>
-                                    <ul>
-                                        <li><a href="#">CBR</a></li>
-                                        <li><a href="#">CB 200</a></li>
-                                        <li><a href="#">Shine</a></li>
-
-                                    </ul>
-                                    <button class="dropbtn" style=" border-bottom: 2px solid black;"><a href="#">Bajaj</a></button>
-                                    <ul>
-                                        <li><a href="#">Dominar</a></li>
-                                        <li><a href="#">Pulsar</a></li>
-
-                                    </ul>
-                                    <a href="#">Suzuki</a>
+                                <button class="dropbtn">Mobiles</button>
+                                <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -50px; will-change: transform;">
+                                    <button class="dropbtn"><a href="#">Iphone</a></button>
+                                    <button class="dropbtn"><a href="#">Samsung</a></button>
                                 </div>
                             </div>
 
@@ -74,41 +61,36 @@
                         <li class="list">
 
                             <div class="dropdown">
-                                <button class="dropbtn">Cars</button>
-                                <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -68px; will-change: transform;">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
-                                </div>
-                            </div>
-
-
-                        </li>
-                        <li class="list">
-
-                            <div class="dropdown">
-                                <button class="dropbtn">Electronics</button>
+                                <button class="dropbtn">Automobiles</button>
                                 <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -20px; will-change: transform;">
 
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                    <a href="#">Cars</a>
+                                    <a href="#">Motorcycles</a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list">
+
+                            <div class="dropdown">
+                                <button class="dropbtn">Musical Instruments</button>
+                                <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 41px; will-change: transform;">
+
+                                    <a href="#">Guitar</a>
+                                    <a href="#">Microphone</a>
+                                    <a href="#">Drum</a>
+                                    <a href="#">Speaker</a>
                                 </div>
                             </div>
 
                         </li>
-
-
-
                         <li class="list">
-
                             <div class="dropdown">
-                                <button class="dropbtn">Books</button>
-                                <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -72px; will-change: transform;">
+                                <button class="dropbtn">Home Appliances</button>
+                                <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 20px; will-change: transform;">
+                                    <a href="#">Furniture</a>
+                                    <a href="#">Kitchen Sets</a>
 
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
                                 </div>
                             </div>
 
@@ -164,17 +146,10 @@
                 <li class="list">
 
                     <div class="dropdown">
-                        <button class="dropbtn">Bikes</button>
-                        <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -65px; will-change: transform;">
-
-                            <a href="#">Honda</a>
-                            <a href="#">Bajaj</a>
-                            <a href="#">Ducati</a>
-                            <a href="#">Hyosung</a>
-                            <a href="#">Kayo</a>
-                            <a href="#">CX</a>
-                            <a href="#">BMW</a>
-
+                        <button class="dropbtn">Mobiles</button>
+                        <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -50px; will-change: transform;">
+                            <button class="dropbtn"><a href="#">Iphone</a></button>
+                            <button class="dropbtn"><a href="#">Samsung</a></button>
                         </div>
                     </div>
 
@@ -183,43 +158,42 @@
                 <li class="list">
 
                     <div class="dropdown">
-                        <button class="dropbtn">Cars</button>
-                        <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -68px; will-change: transform;">
-
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
-                        </div>
-                    </div>
-
-
-                </li>
-                <li class="list">
-
-                    <div class="dropdown">
-                        <button class="dropbtn">Electronics</button>
+                        <button class="dropbtn">Automobiles</button>
                         <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -20px; will-change: transform;">
 
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="#">Cars</a>
+                            <a href="#">Motorcycles</a>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="list">
+
+                    <div class="dropdown">
+                        <button class="dropbtn">Musical Instruments</button>
+                        <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 41px; will-change: transform;">
+
+                            <a href="#">Guitar</a>
+                            <a href="#">Microphone</a>
+                            <a href="#">Drum</a>
+                            <a href="#">Speaker</a>
                         </div>
                     </div>
 
                 </li>
 
                 <li class="list">
-                    <div class="dropdown">
-                        <button class="dropbtn">Pets</button>
-                        <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -72px; will-change: transform;">
 
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+
+                    <div class="dropdown">
+                        <button class="dropbtn">Home Appliances</button>
+                        <div class="dropdown-content" x-placement="right-start" style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 20px; will-change: transform;">
+
+                            <a href="#">Furniture</a>
+                            <a href="#">Kitchen Sets</a>
+
                         </div>
                     </div>
-
-
 
                 </li>
                 <li class="load"><button class="loadbtn">Load More</button></li>
@@ -228,58 +202,38 @@
 
         <!-- desktop ko lai -->
 
-        <!-- popular ADS PART -->
+        <!-- LATEST ADS PART -->
         <div class="row3" style="margin-top:29px ;">
-            <h3>POPULAR ADS</h3>
+            <h3>LATEST ADS</h3>
             <!-- carousel-->
         </div>
         <div class="d-flex position-relative mt-2 owl-carousel owl-theme">
-            <div class="card">
-                <img class="card-img-top " src="/images/8.jpeg">
+            @foreach($posts as $post)
+            @foreach($post->images->take(1) as $img)
+
+            <div class="card " style="height: 100%;">
+                <img class="card-img-top " src="{{asset($img->image)}}" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Ferrari</h4>
-                    <p class="card-text">Used For 3 Years . No problems all good </p>
+                    <a href="{{route('singlepost',$post->id)}}" style="color:#D02020;">
+                        <h4 class="card-title" style="color:#D02020;">{{$post->title}}</h4>
+                    </a>
+                    <p class="card-text" style="font-style:italic;"> {{$post->condition}} <br> Used For {{$post->usedfor}}</p>
+                    <b>
+                        <p class="card-text" style="color:#D02020;">Rs. {{$post->price}}</p>
+                    </b>
                 </div>
 
             </div>
-            <div class="card">
-                <img class="card-img-top" src="/images/4.jpg">
-                <div class="card-body">
-                    <h4 class="card-title">Ducati</h4>
-                    <p class="card-text">
-                        Cheap Bargain.Need Money</p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="/images/9.jpeg ">
-                <div class="card-body">
-                    <h4 class="card-title">Iphone</h4>
-                    <p class="card-text">Good Condition. No problems all good </p>
 
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="/images/user.png ">
-                <div class="card-body">
-                    <h4 class="card-title">Iphone</h4>
-                    <p class="card-text">Good Condition. No problems all good </p>
+            @endforeach
+            @endforeach
 
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" src="/images/profile.PNG ">
-                <div class="card-body">
-                    <h4 class="card-title">Iphone</h4>
-                    <p class="card-text">Good Condition. No problems all good </p>
-
-                </div>
-            </div>
 
         </div>
 
-        <!-- NEW ADS PART -->
+        <!-- POPULAR ADS PART -->
         <div class="row3" style="margin-top:29px ;">
-            <h3>NEW ADS</h3>
+            <h3>POPULAR ADS</h3>
         </div>
         <div class="d-flex position-relative mt-2 owl-carousel owl-theme">
             <div class="card">
@@ -344,7 +298,7 @@
                         <li class="list-inline-item"><a href="#">About</a></li>
                         <li class="list-inline-item"><a href="#">Contact</a></li>
                         <li class="list-inline-item"><a href="#">Something</a></li>
-                        <li class="list-inline-item"><a href="#">Bla Bla</a></li>
+
                     </ul>
                     <p class="copyright">PURSELL © 2021</p>
                 </footer>
@@ -355,19 +309,21 @@
     </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 <!-- Owl Carousel -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <!-- custom JS code after importing jquery and owl -->
 <script>
     $('.owl-carousel').owlCarousel({
+        // loop:true,
         margin: 2,
         nav: true,
-
+        scrollbarType: "progress",
         dots: false,
         navText: ["<div class='nav-button owl-prev'>‹</div>", "<div class='nav-button owl-next'>›</div>"],
         responsive: {
+
             0: {
                 items: 2
             },

@@ -37,7 +37,7 @@ class LoginController extends Controller
         if (Auth()->user()->role == 1) {
             return route('admin.dashboard');
         } elseif (Auth()->user()->role == 0) {
-            return route('user.dashboard');
+            return route('welcome');
         }
     }
 
@@ -50,6 +50,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
 
 
     public function login(Request $request)
@@ -69,7 +70,8 @@ class LoginController extends Controller
             if (auth()->user()->role == 1) {
                 return redirect()->route('admin.dashboard');
             } elseif (auth()->user()->role == 0) {
-                return redirect()->route('user.dashboard');
+                return redirect()->route('welcome');
+                // return view('welcome');
             }
         } else {
             return redirect("login")->with('fail', 'Oppes! You have entered invalid credentials');

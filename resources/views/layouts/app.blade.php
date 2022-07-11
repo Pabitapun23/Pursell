@@ -94,8 +94,9 @@
 
 
         <nav class="navbar navbar-expand-custom navbar-mainbg">
-            <img src="images/logo.png" style="height:80px ; width: 85px;margin-right: 139px;margin-top: 0px;margin-bottom: -10px;margin-left: -10px;">
-
+            <a href="/">
+                <img src="{{ asset('images/logo.png') }}" style="height:80px ; width: 85px;margin-right: 139px;margin-top: 0px;margin-bottom: -10px;margin-left: -10px;">
+            </a>
             <div class="d-lg-flex justify-content-lg-end collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <div class="hori-selector">
@@ -125,7 +126,7 @@
                         </a>
                     </li>
                     <li class="nav-item3">
-                        <a class="nav-link" href="javascript:void(0);">
+                        <a class="nav-link" href="{{route('postform')}}">
                             <button class="btn3">
                                 <i class="fa fa-plus-circle" aria-hidden="true">
 
@@ -136,12 +137,6 @@
                     <!-- Authentication Links -->
                     @guest
                     @if (Route::has('login'))
-                    <!-- <li class="nav-item4">
-                        <a class="nav-link" href="{{ route('login') }}">
-                            <i class="bi bi-person-plus-fill text-danger">
-                            </i>
-                        </a>
-                    </li> -->
                     <li class="nav-item4">
                         <a class="nav-link" href="{{ route('login') }}">
                             <button class="btn3">
@@ -150,8 +145,6 @@
                         </a>
                     </li>
                     @endif
-
-
                     @else
                     <li class="nav-item6 dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

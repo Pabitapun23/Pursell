@@ -6,18 +6,25 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
+use App\Models\Image;
 
 class Post extends Model
 {
-    use HasFactory;
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-    protected $table = 'posts';
+  protected $guarded = [];
+  use HasFactory;
 
-    public function categories() {
-      return $this->belongsTo('Category');
-    }
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
+  protected $table = 'posts';
+
+  public function categories()
+  {
+    return $this->belongsTo('Category');
+  }
+  public function images()
+  {
+    return $this->hasMany(Image::class);
+  }
 }
