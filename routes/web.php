@@ -6,8 +6,10 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SinglePostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -60,3 +62,5 @@ Route::group(['prefix' => 'user', 'middleware', 'verified' => ['isUser', 'auth',
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'setting'])->name('user.settings');
 });
+
+Route::get('/search', [SearchController::class, 'searchPost'])->name('search');
