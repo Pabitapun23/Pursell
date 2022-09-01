@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -28,4 +29,20 @@ class CategoryController extends Controller
     //         'subcategories' => $subcategories
     //     ]);
     // }
+
+    // public function index()
+    // {
+    //     $categories = Category::where('parent_id', 0)->get();
+
+    //     $subcategories = Category::where('parent_id', '!=', 0)->get();
+    //     return view('test', compact("categories", "subcategories"));
+    // }
+
+    public function index($catname)
+    {
+        $categoryitem = Category::with('posts')->where('name', '=', $catname)->get();
+        //$products = $categoryitem->posts()->orderBy('created_at')->paginate(12);
+        return view('categorydisplaypost', ['categoryitem' => $categoryitem]);
+        //dd($categoryitem);
+    }
 }

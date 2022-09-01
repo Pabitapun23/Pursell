@@ -85,3 +85,17 @@
         }
     });
 </script>
+
+<div class="card">
+    <img class="card-img-top " src="{{asset($img->image)}}" alt="">
+    <div class="card-body">
+        <a href="{{route('singlepost',$post->id)}}" style="color:#D02020;">
+            <h4 class="card-title" style="color:#D02020;">{{$post->title}}</h4>
+        </a>
+        <p class="card-text" style="font-style:italic;"> {{$post->condition}} <br> Used For {{$post->usedfor}}</p>
+        <b>
+            <p class="card-text" style="color:#D02020;">Rs. {{$post->price}}</p>
+        </b>
+    </div>
+
+</div>

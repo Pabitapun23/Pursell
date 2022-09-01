@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SinglePostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +49,10 @@ Route::post('addpost', [PostController::class, 'addpost'])->name('addpost');
 
 Route::get('singlepost/{id}', [SinglePostController::class, 'singlepost'])->name('singlepost');
 
+Route::post('singlepost/{id}', [CommentController::class, 'addComment'])->name('comment');
+
+Route::post('test/{id}', [TestController::class, 'test'])->name('comments');
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -64,3 +70,4 @@ Route::group(['prefix' => 'user', 'middleware', 'verified' => ['isUser', 'auth',
 });
 
 Route::get('/search', [SearchController::class, 'searchPost'])->name('search');
+Route::get('displaycat/{catname}', [CategoryController::class, 'index'])->name('displaycat');

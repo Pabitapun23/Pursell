@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Comment;
 
 class Post extends Model
 {
@@ -26,5 +27,9 @@ class Post extends Model
   public function images()
   {
     return $this->hasMany(Image::class);
+  }
+  public function comments()
+  {
+    return $this->hasMany(Comment::class);
   }
 }

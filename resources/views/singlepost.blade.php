@@ -7,6 +7,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <link rel="stylesheet" href="{{ asset('css/singlepost.css') }}">
@@ -15,6 +16,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
 
+    <!-- jquery for comment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 
@@ -189,40 +192,68 @@
                                             <div class="comment-box ml-2">
                                                 <p class="adheading">Add a comment
                                                 <p>
-                                                <div class="comment-area">
 
-                                                    <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea>
+                                                <form action="{{ route('comment', $post->id) }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id" id="id" value="{{$post->id}}">
 
-                                                </div>
+                                                    <div class="comment-area">
 
-                                                <div class="comment-btns mt-2">
 
-                                                    <div class="row">
+                                                        <textarea class="form-control" placeholder="what is your view?" rows="4" id="comment" name="comment"></textarea>
 
-                                                        <div class="col-6">
+                                                    </div>
 
+                                                    <div class="comment-btns mt-2">
+
+                                                        <div class="row">
+
+                                                            <div class="col-6">
+                                                                <!-- 
                                                             <div class="pull-left">
 
                                                                 <button class="btnad">Cancel</button>
 
+                                                            </div> -->
+
                                                             </div>
 
-                                                        </div>
+                                                            <div class="col-6">
 
-                                                        <div class="col-6">
+                                                                <div class="pull-right">
 
-                                                            <div class="pull-right">
+                                                                    <button type="submit" id="addCommentBtn" class="btnad">Post </button>
+                                                                </div>
 
-                                                                <button class="btnad">Post </button>
                                                             </div>
 
                                                         </div>
 
                                                     </div>
-
-                                                </div>
+                                                </form>
 
                                             </div>
+                                            <!-- comment ko display ko lai -->
+                                            <div class="commentsec">
+                                                @foreach($post->comments as $comment)
+                                                <div class="border">
+                                                    <div class="text">
+                                                        <p style="font-weight:bold; margin-top:10px; margin-bottom:10px;">{{$comment->user->name}}</p>
+                                                        <p>{{$comment->comment}}</p>
+
+                                                    </div>
+                                                </div>
+
+
+                                                @endforeach
+                                                <div class="ajaxcomm">
+                                                    <div class="commentname text">
+                                                    </div>
+                                                    <div class="newcomment text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                     </div>
@@ -279,6 +310,68 @@
                 items: 1
             }
         }
+    });
+</script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF_TOKEN': $('meta[name="csrf_token"]').attr('content')
+        }
+    });
+
+    $(document).ready(function() {
+
+        //add comment function by id
+        $('#addCommentBtn').click(function(e) {
+            e.preventDefault();
+
+            //get data from form
+
+            var comment = $('#comment').val();
+            var id = $('#id').val();
+
+            // $.ajax({
+            //     type: 'POST',
+            //     dataType: 'json',
+            //     data: {
+            //         comment: comment,
+            //         _token: '{{csrf_token()}}'
+            //     },
+            //     url: '/singlepost/' + id,
+            //     success: function(data) {
+            //         console.log(data.html);
+            //         // $('#commentdisplay').val("");
+            //         // $('#commentdisplay').val(data);
+            //         // console.log('data saved');
+            //     },
+            //     error: function(error) {
+            //         console.log(error);
+            //     }
+
+            // })
+            $.ajax({
+                type: "post",
+                url: '/singlepost/' + id,
+                data: {
+                    comment: comment,
+                    _token: '{{csrf_token()}}'
+                },
+                success: function(data) {
+                    $('#comment').val();
+                    alert("comment added successfully");
+                    // console.log(comment);
+
+                    $('.commentname').html(data.data);
+                    $('.newcomment').append(comment);
+
+
+                },
+
+
+            });
+
+        })
     });
 </script>
 

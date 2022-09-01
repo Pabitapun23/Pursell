@@ -1,0 +1,71 @@
+
+
+.card-img-top {
+    width: 100%;
+    height: 19vw;
+    object-fit: cover;
+}
+
+.card{
+    margin-top: 20px;
+
+}
+
+
+.row3 {
+    margin-top: 20px;
+    background-color: white;
+    margin-left: -10px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-left: 16px;
+    border: none;
+    transition: none;
+    transform: none;
+    font-family: "Alegreya Sans SC";
+    font-style: italic;
+    color: #d02020;
+    background: #ffffff;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+}
+.card-title{
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    transition: all 0.5s;
+    cursor: pointer;
+   margin-bottom: 50px;
+  }
+
+  .owl-carousel .nav-button {
+    cursor: pointer;
+    position: absolute;
+}
+
+.owl-carousel .owl-prev {
+    left: -12px;
+    position: absolute;
+    top: 35%;
+}
+.owl-carousel .owl-next {
+    right: -12px;
+    position: absolute;
+    top: 35%;
+}
+.owl-carousel .owl-dots.disabled,
+.owl-carousel .owl-nav.disabled {
+    display: block;
+}
+.owl-theme .owl-nav [class*="owl-"] {
+    color: #ffffff;
+    font-size: 20px;
+    background: #d02020;
+    border-radius: 3px;
+
+    box-shadow: 3px 2px 4px rgba(252, 66, 66, 0.5);
+}

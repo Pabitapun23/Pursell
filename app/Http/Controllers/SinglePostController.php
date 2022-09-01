@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class SinglePostController extends Controller
 {
     public function singlepost($id)
+
+
     {
+        
         $posts = Post::with('images', 'user')->where('id', $id)->get();
 
         // dd($posts);
