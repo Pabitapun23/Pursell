@@ -39,8 +39,8 @@ class CommentController extends Controller
         //$comments->user;
 
         $user_name = Auth::user()->name;
-        // $comment = $request->comment;
-        return response()->json(["data" => [$user_name]]);
+        $time = $comments->created_at->diffForHumans();
+        return response()->json(["name" => [$user_name], "date" => [$time], "success" => "comment added successfully"]);
 
         //return response(["data" => $user_name]);
     }

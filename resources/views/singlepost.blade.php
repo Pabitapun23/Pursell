@@ -193,7 +193,7 @@
                                                 <p class="adheading">Add a comment
                                                 <p>
 
-                                                <form action="{{ route('comment', $post->id) }}" method="POST">
+                                                <form action="{{ route('comment', $post->id) }}" method="POST" id="my_form">
                                                     @csrf
                                                     <input type="hidden" name="id" id="id" value="{{$post->id}}">
 
@@ -235,10 +235,14 @@
                                             </div>
                                             <!-- comment ko display ko lai -->
                                             <div class="commentsec">
+                                                <p class="alertcomment" style="background-color: #D4EDDA; padding-left:20px; font-style:italic;"></p>
                                                 @foreach($post->comments as $comment)
                                                 <div class="border">
                                                     <div class="text">
-                                                        <p style="font-weight:bold; margin-top:10px; margin-bottom:10px;">{{$comment->user->name}}</p>
+                                                        <a href="{{ route('singlepost', $post->id) }}" style="color:#D02020;">
+                                                            <p style="font-weight:bold; margin-top:10px; margin-bottom:10px;">{{$comment->user->name}}</p>
+                                                        </a>
+                                                        <p style="font-style: italic;">{{$comment->created_at->diffForHumans()}}</p>
                                                         <p>{{$comment->comment}}</p>
 
                                                     </div>
@@ -248,6 +252,8 @@
                                                 @endforeach
                                                 <div class="ajaxcomm">
                                                     <div class="commentname text">
+                                                    </div>
+                                                    <div class="commentdate" style="font-style:italic ;padding-left: 20px;">
                                                     </div>
                                                     <div class="newcomment text">
                                                     </div>
@@ -312,6 +318,16 @@
         }
     });
 </script>
+<!-- <script>
+    const form = document.getElementById('my_form');
+
+    form.addEventListener('submit', function handleSubmit(event) {
+        event.preventDefault();
+
+
+        form.reset();
+    });
+</script> -->
 
 <script>
     $.ajaxSetup({
@@ -359,11 +375,15 @@
                 },
                 success: function(data) {
                     $('#comment').val();
-                    alert("comment added successfully");
-                    // console.log(comment);
+                    // alert("comment added successfully");
 
-                    $('.commentname').html(data.data);
+                    // console.log(comment);
+                    $('.alertcomment').html(data.success);
+
+                    $('.commentname').html(data.name);
+                    $('.commentdate').html(data.date);
                     $('.newcomment').append(comment);
+
 
 
                 },
@@ -374,6 +394,7 @@
         })
     });
 </script>
+
 
 </html>
 @endsection

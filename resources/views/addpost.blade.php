@@ -74,16 +74,7 @@
 
                                     @endif
                                     @if(Session::get('success'))
-                                    <div class="alert alert-success  alert-dismissible d-flex" role="alert">
-                                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                                            <use xlink:href="#check-circle-fill" />
-                                        </svg>
-                                        <div>
-                                            {{Session::get('success')}}
-
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
-                                    </div>
+              
 
                                     @endif
                                     <!-- Form -->

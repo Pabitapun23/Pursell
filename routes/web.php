@@ -26,9 +26,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('');
+Route::get('/profile', function () {
+    return view('profile');
+});
 
 // Route::get('/singlepost/2', function () {
 //     return view('singlepost');
