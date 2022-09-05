@@ -69,5 +69,7 @@ Route::group(['prefix' => 'user', 'middleware', 'verified' => ['isUser', 'auth',
     Route::get('settings', [UserController::class, 'setting'])->name('user.settings');
 });
 
+Route::get('address', [AddressController::class, 'location'])->name('address');
 Route::get('/search', [SearchController::class, 'searchPost'])->name('search');
+
 Route::get('displaycat/{catname}', [CategoryController::class, 'index'])->name('displaycat');

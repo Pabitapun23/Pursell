@@ -17,15 +17,40 @@ class SearchController extends Controller
             ->toArray();
     }
 
+    // public function searchPost(Request $request)
+    // {
+    //     if ($request->ajax()) {
+    //         $data = Post::where('title', 'like', '%' . $request->search . '%')->get();
+    //         $output = '';
+    //         if (count($data) > 0) {
+    //             $output = '<ul class="list-group" style="display:block;position:relative;z-index:1">';
+    //             foreach ($data as $row) {
+    //                 $output .= '<li class="list-group-item">' . $row->title . '</li>';
+    //             }
+    //             $output .= '</ul>';
+    //         } else {
+    //             $output .= '<li class="list-group-item">No data found</li>';  //. is for concatenate
+    //         }
+    //         return $output;
+    //     }
+    //     return view('welcome');
+    // }
+
     public function searchPost(Request $request)
     {
         if ($request->ajax()) {
-            $data = Post::where('title', 'like', '%' . $request->search . '%')->get();
+            $data = Post::where('title', 'like', '%' . $request->search . '%')
+                ->where(function ($query) use ($request) {
+                    if ($request->address) {
+                        $query->where('address', $request->address);
+                    }
+                })
+                ->get();
             $output = '';
             if (count($data) > 0) {
                 $output = '<ul class="list-group" style="display:block;position:relative;z-index:1">';
                 foreach ($data as $row) {
-                    $output .= '<li class="list-group-item">' . $row->title . '</li>';
+                    $output .= '<a href="/singlepost/' . $row->id . '" class="list-group-item">' . $row->title . '</a>';
                 }
                 $output .= '</ul>';
             } else {
@@ -34,9 +59,5 @@ class SearchController extends Controller
             return $output;
         }
         return view('welcome');
-    }
-
-    public function filterPost(Request $request)
-    {
     }
 }

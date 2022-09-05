@@ -31,11 +31,6 @@
     margin-top: 20px;
     background-color: white;
     margin-left: -10px;
-
-}
-
-.panel.panel-default{
-    overflow: inherit !important;
 }
 
 .dropdown-content {
@@ -44,8 +39,7 @@
     background-color: #f1f1f1;
     min-width: 80px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
- 
-    overflow:auto;
+    z-index: 1;
 }
 
 .dropdown-content a {
@@ -84,7 +78,7 @@
     background: #ffffff;
     box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
 }
-h9 {
+.h9 {
     font-size: 20px;
     border: none;
     transition: none;
@@ -106,6 +100,7 @@ h3 {
     color: #d02020;
     background: #ffffff;
     box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px;
 }
 
 .list {
@@ -118,30 +113,16 @@ h3 {
     background: #ffffff;
     box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid black;
-
-
-}
-li{
-    vertical-align: middle;
 }
 
 ul {
     list-style-type: none;
-  
-
 }
 
 .search_form {
     border: none;
     box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
     width: 200px;
-}
-
-
-.search_form2 {
-    border: none;
-    box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
-    width: 150px;
 }
 
 .form1 {
@@ -163,14 +144,14 @@ ul {
 .form4 {
     border: none;
     box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
-    width: 115px;
+    width: 150px;
     height: 39px;
+    color: gray;
 }
 
 .search1 {
     display: inline-block;
     border: none;
-
     margin-top: 20px;
     padding-bottom: 30px;
     transition: all 0.5s;
@@ -348,24 +329,6 @@ ul {
     height: 150px;
     width: 150px;
 }
-.card-title{
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    transition: all 0.5s;
-    cursor: pointer;
-   margin-bottom: 50px;
-  }
-  /* .card-title:hover {
-
-    overflow: visible;
-    -webkit-line-clamp: 2;
-   
-    
-  } */
 
 .cardmobile-img-top {
     height: 80%;

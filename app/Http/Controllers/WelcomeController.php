@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -22,11 +23,15 @@ class WelcomeController extends Controller
 
         // dd($images);
 
-        return view('welcome', compact("categories", "subcategories", "posts"));
+        $addresses = Address::all();
+
+        return view('welcome', compact("categories", "subcategories", "addresses", "posts"));
     }
     // public function index()
     // {
 
     //     return view('welcome', compact("categories", "subcategories", "posts"));
     // }
+
+
 }
