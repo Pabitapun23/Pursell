@@ -7,30 +7,49 @@ use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
-class PostController extends Controller
+class ProfileController extends Controller
 {
-    public function __construct()
+    public function displayprofile($id)
     {
-        $this->middleware(['auth', 'verified']); // user cannot access the page without the verification
+        $users = User::find($id);
+
+
+        $posts = $users->post()->get();
+        //dd($posts);
+
+        // dd($users);
+
+        return view('profile', compact("users", "posts"));
     }
-    public function index(Request $request)
+    public function deletepost($id)
+    {
+        $data = Post::find($id);
+        $data->delete();
+        //dd("delete");
+
+        return back()->with('success', 'Post deleted successfully!');
+    }
+
+
+
+
+    function showinForm($id)
     {
         $address = Address::orderBy('city')->get();
         $condition = Condition::all();
         // dd($address);
 
         $categoris = Category::where('parent_id', 0)->get();
+        $data = Post::find($id);
+        //dd($data);
 
-        return view('addpost', ["categoris" => $categoris, "address" => $address, "condition" => $condition]);
-        // return view('category', ["categoris" => $categoris]);
+        return view('editpost', ["categoris" => $categoris, "address" => $address, "datas" => $data, "condition" => $condition]);
     }
-
     public function subCat(Request $request)
     {
 
@@ -44,52 +63,32 @@ class PostController extends Controller
             'subcategories' => $subcategories
         ]);
     }
-
-
-    public function addpost(Request $request)
+    function updatepost(Request $request, $id)
     {
-        // dd($request->all());
-        $request->validate([
-            'title' => 'required|string|max:255',
-            //'images' => 'required',
-            // 'category' => 'required',
-            'subcategory' => 'required',
-            'condition' => 'required',
-            'address' => 'required',
-            'description' => 'required',
 
-            'usedfor' => 'required|string|max:255',
-
-            'price' => 'required|numeric|min:10',
-            'date' => 'required|date_format:Y-m-d'
-
-
-        ]);
-
-        //dd($request->all());
-        $post = new Post();
-
+        //dd($request->warranty);
+        $post = Post::find($id);
         $post->title = $request->title;
 
-        $post->category_id = $request->subcategory;
+        //$post->category_id = $request->subcategory;
         $post->condition = $request->condition;
         $post->address = $request->address;
         $post->description = $request->description;
         $post->usedfor = $request->usedfor;
         // $post->warranty = $request->warranty;
 
-        if ($request->warranty == "on") {
+        if ($request->warranty === "1") {
             $post->warranty = 1;
         } else {
             $post->warranty = 0;
         }
 
-        if ($request->deliverystatus == "on") {
+        if ($request->deliverystatus === "1") {
             $post->delivery = 1;
         } else {
             $post->delivery = 0;
         }
-        if ($request->negotiablestatus == "on") {
+        if ($request->negotiablestatus === "1") {
             $post->negotiable = 1;
         } else {
             $post->negotiable = 0;
@@ -99,9 +98,9 @@ class PostController extends Controller
         $post->expirydate = $request->date;
 
         $post->user_id  = Auth::user()->id;
-
+        $post->save();
         if ($request->hasFile('images')) {
-            $post->save();
+
 
             foreach ($request->file('images') as $imageFile) {
                 $extension = $imageFile->getClientOriginalExtension();
@@ -113,9 +112,7 @@ class PostController extends Controller
                 $image->image = 'uploads/post-images/' . $fileName;
                 $image->save();
             }
-            return back()->with('success', 'Your post has been uploaded');
-        } else {
-            return back()->with('fail', "Unable to add your post please fill all the field and try again");
         }
+        return back()->with('success', 'Your post has been updated');
     }
 }

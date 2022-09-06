@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Address;
+use App\Models\Condition;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 
@@ -27,6 +28,8 @@ class WelcomeController extends Controller
         // dd($images);
 
         $addresses = Address::all();
+
+        //dd($condition);
 
         return view('welcome', compact("categories", "subcategories", "addresses", "organizations", "posts"));
     }

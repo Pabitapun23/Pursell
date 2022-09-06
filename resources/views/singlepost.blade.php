@@ -80,7 +80,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <h5 class="card-title">{{$post->user->name}}</h5>
+                                <a href="{{ route('profile', $post->user->id) }}" style="color:#D02020;">
+                                    <h5 class="card-title">{{$post->user->name}}</h5>
+                                </a>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -239,7 +241,7 @@
                                                 @foreach($post->comments as $comment)
                                                 <div class="border">
                                                     <div class="text">
-                                                        <a href="{{ route('singlepost', $post->id) }}" style="color:#D02020;">
+                                                        <a href="{{ route('profile', $comment->user->id) }}" style="color:#D02020;">
                                                             <p style="font-weight:bold; margin-top:10px; margin-bottom:10px;">{{$comment->user->name}}</p>
                                                         </a>
                                                         <p style="font-style: italic;">{{$comment->created_at->diffForHumans()}}</p>

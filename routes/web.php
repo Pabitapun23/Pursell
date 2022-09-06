@@ -11,6 +11,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -53,7 +54,10 @@ Route::get('singlepost/{id}', [SinglePostController::class, 'singlepost'])->name
 Route::post('singlepost/{id}', [CommentController::class, 'addComment'])->name('comment');
 
 Route::post('test/{id}', [TestController::class, 'test'])->name('comments');
-
+Route::get('profile/{id}', [ProfileController::class, 'displayprofile'])->name('profile');
+Route::get('deletepost/{id}', [ProfileController::class, 'deletepost'])->name('deletepost');
+Route::get('editpost/{id}',  [ProfileController::class, 'showinForm'])->name('editpost');
+Route::post('editaction/{id}', [ProfileController::class, 'updatepost'])->name('updatepost');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
