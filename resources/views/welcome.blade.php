@@ -295,7 +295,10 @@
                 <div class="row">
                     <h9 style="padding-top: 5px; padding-bottom: 10px;">WANT TO DONATE?</h9>
                     <div class="col">
-                        <button class="donatebutton">Click Here</button>
+                        <a href="{{ url('/donation-page') }}">
+                            <button type="submit" class="btn btn-danger my-2 me-3">Click Here</button>
+                        </a>
+                        {{-- <button class="donatebutton">Click Here</button> --}}
                     </div>
                 </div>
             </div>
@@ -402,30 +405,6 @@
             });
         });
     </script>
-
-    {{-- <script>
-        $(document).ready(function() {
-            $("#search").on('keyup', function() {
-                var value = $(this).val();
-                $.ajax({
-                    url: "search",
-                    type: "GET",
-                    data: {
-                        'search': value
-                    },
-                    success: function(data) {
-                        $("#post_list").html(data);
-                    }
-                });
-            });
-
-            $(document).on('click', 'li', function() {
-                var value = $(this).text();
-                $("#search").val(value);
-                $("#post_list").html("");
-            });
-        });
-    </script> --}}
 
     </html>
 @endsection

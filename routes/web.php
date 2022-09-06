@@ -8,6 +8,7 @@ use App\Http\Controllers\SinglePostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -73,3 +74,6 @@ Route::get('address', [AddressController::class, 'location'])->name('address');
 Route::get('/search', [SearchController::class, 'searchPost'])->name('search');
 
 Route::get('displaycat/{catname}', [CategoryController::class, 'index'])->name('displaycat');
+
+Route::get('/donation-page', [OrganizationController::class, 'organizationData']);
+Route::get('/donation-view/{id}', [OrganizationController::class, 'orgDetail']);
