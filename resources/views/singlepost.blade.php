@@ -47,7 +47,7 @@
                         <ul class="list-group">
                             <div class="row" style="width: 100%; margin-left: 0px;">
                                 <div class="col-md-6">
-                                    <li class="list-group-item border-0" style="color: grey; margin-top: 4px;"><i class="fa-solid fa-eye"></i> 2112 </li>
+                                    <li class="list-group-item border-0" style="color: grey; margin-top: 4px;"><i class="fa-solid fa-eye"></i> {{$post->reads}} </li>
                                 </div>
                                 <div class="col-md-6">
                                     <li class="list-group-item border-0" style="font-family: 'Alegreya Sans SC';color:grey;  font-size: 21px;"><i class="fa-solid fa-money-bill" style="color:green;"></i>Rs. {{$post->price}}</li>
@@ -76,7 +76,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
-                                <div class="cardprofile"><button class="profile"><img src="{{ asset('images/user.png') }} " class="profile" /></button>
+                                <div class="cardprofile">
+                                    @if($post->user->profileimg == null)
+                                    <img src="{{URL::asset('/images/user.png')}}" alt="avataree" class="rounded-circle" me-2 style="width:50px;height:50px;object-fit:cover;">
+                                    @else
+                                    <img src="/postimage/{{$post->user->profileimg}}" alt="avatar" class="rounded-circle" me-2 style="width:50px;height:50px;object-fit:cover;">
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-12">

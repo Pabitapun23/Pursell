@@ -37,12 +37,53 @@
             <div class="col-lg-5 col-12">
                 <div class="content shadow ms-3 mt-3 px-5 py-5 ps-2 bg-body rounded
               justify-content-center">
-                    <img src="Images/profile.PNG" class="img-fluid rounded-circle
+                    <div>
+                        @if($users->profileimg == null)
+                        <img src="{{URL::asset('/images/user.png')}}" alt="avatar" class="rounded-circle" me-2 style="width:50px;height:50px;object-fit:cover;">
+                        @else
+                        <img src="/postimage/{{$users->profileimg}}" alt="avatar" class="rounded-circle" me-2 style="width:50px;height:50px;object-fit:cover;">
+                        @endif
+                    </div>
+                    <!-- <div>
+                        <img src="Images/profile.PNG" alt="avatar" class="rounded-circle" me-2 style="width:38px;height:38px;object-fit:cover;">
+                    </div> -->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn editbutton" data-bs-toggle="modal" data-bs-target="#addModal">
+                        Edit Image
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addModalLabel">Profile Picture </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="{{route('profileimg')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div>
+                                            <p><b>Add Profile Picture </b></p>
+
+                                            <input class="form-control" type="file" id="profileFile" name="profileimg">
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-danger w">Update Profile</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <img src="Images/profile.PNG" class="img-fluid rounded-circle
                 ms-4">
                     <div class="d-grid gap-2 d-md-block pt-3 ps-3 ms-2">
                         <button class="editbutton" type="button">Edit</button>
                     </div>
-                    <br>
+                    <br> -->
                     <hr>
                     <div class="d-grid gap-2 d-md-block ps-4 ms-2">
                         <p class="p-0">{{$users->name}}</p>

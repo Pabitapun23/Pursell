@@ -16,11 +16,15 @@ class WelcomeController extends Controller
     // display post in the homepage
     function displaypost()
     {
+
+
         $categories = Category::where('parent_id', 0)->get();
 
         $subcategories = Category::where('parent_id', '!=', 0)->get();
 
         $posts = Post::with('images')->get()->sortDesc();
+        $popularpost = Post::orderBy('reads', 'DESC')->get();
+
 
         $organizations  = Organization::all();
         // $images =  $posts[0]->images->image;
@@ -31,13 +35,6 @@ class WelcomeController extends Controller
 
         //dd($condition);
 
-        return view('welcome', compact("categories", "subcategories", "addresses", "organizations", "posts"));
+        return view('welcome', compact("categories", "subcategories", "addresses", "organizations", "posts", "popularpost"));
     }
-    // public function index()
-    // {
-
-    //     return view('welcome', compact("categories", "subcategories", "posts"));
-    // }
-
-
 }

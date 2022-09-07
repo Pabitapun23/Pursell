@@ -115,4 +115,18 @@ class ProfileController extends Controller
         }
         return back()->with('success', 'Your post has been updated');
     }
+
+    function userprofile(Request $request)
+    {
+        //dd($request->profileimg);
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        $image = $request->profileimg;
+
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->profileimg->move('postimage', $imagename);
+        $data->profileimg = $imagename;
+        $data->update();
+        return redirect()->back();
+    }
 }

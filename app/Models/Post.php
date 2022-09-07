@@ -32,4 +32,9 @@ class Post extends Model
   {
     return $this->hasMany(Comment::class);
   }
+  // public function incrementReadCount()
+  // {
+  //   $this->reads++;
+  //   return $this->update();
+  // }
 }

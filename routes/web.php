@@ -58,6 +58,7 @@ Route::get('profile/{id}', [ProfileController::class, 'displayprofile'])->name('
 Route::get('deletepost/{id}', [ProfileController::class, 'deletepost'])->name('deletepost');
 Route::get('editpost/{id}',  [ProfileController::class, 'showinForm'])->name('editpost');
 Route::post('editaction/{id}', [ProfileController::class, 'updatepost'])->name('updatepost');
+Route::post('profileimg', [ProfileController::class, 'userprofile'])->name('profileimg');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

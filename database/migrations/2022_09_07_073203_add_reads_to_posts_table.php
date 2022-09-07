@@ -13,21 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
+            $table->bigInteger('reads')->unsigned()->default(0)->index();
 
-            $table->bigInteger('block_amount')->default(0);
+            // $table->dropColumn(['status', 'another_column']);
+
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('block_amount');
+        Schema::table('posts', function (Blueprint $table) {
+
+            $table->dropColumn('reads');
         });
     }
 };
