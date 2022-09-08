@@ -120,9 +120,11 @@ ul {
 }
 
 .search_form {
-    border: none;
     box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
     width: 200px;
+    border: none;
+    /* border-top-left-radius: 29%;
+    border-bottom-left-radius: 29%; */
 }
 
 .form1 {

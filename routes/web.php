@@ -77,6 +77,8 @@ Route::group(['prefix' => 'user', 'middleware', 'verified' => ['isUser', 'auth',
 
 Route::get('address', [AddressController::class, 'location'])->name('address');
 Route::get('/search', [SearchController::class, 'searchPost'])->name('search');
+Route::get('searchData', [SearchController::class, 'searchPostDatas'])->name('searchData');
+Route::get('searchData/filter', [SearchController::class, 'filterPost'])->name('filter');
 
 Route::get('displaycat/{catname}', [CategoryController::class, 'index'])->name('displaycat');
 

@@ -12,8 +12,8 @@ class ConditionController extends Controller
     public function condition(Request $request)
     {
         $posts = Post::all();
-        $condition = (Condition::all() != null) ?? [];
+        $conditions = (Condition::all() != null) ?? [];
 
-        return view('welcome', compact('condition', 'posts'));
+        return view('welcome', compact('conditions', 'posts'));
     }
 }

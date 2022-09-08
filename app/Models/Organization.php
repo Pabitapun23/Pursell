@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Organization extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    protected $table = 'organizations';
+    protected $fillable = ['name', 'image', 'description', 'telephone', 'location', 'street', 'email', 'website'];
 }

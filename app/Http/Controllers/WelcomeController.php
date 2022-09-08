@@ -32,9 +32,10 @@ class WelcomeController extends Controller
         // dd($images);
 
         $addresses = Address::all();
+        $conditions = Condition::all();
 
         //dd($condition);
 
-        return view('welcome', compact("categories", "subcategories", "addresses", "organizations", "posts", "popularpost"));
+        return view('welcome', compact("categories", "subcategories", "addresses", "conditions", "organizations", "posts", "popularpost"));
     }
 }
