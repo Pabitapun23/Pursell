@@ -96,9 +96,6 @@
                             <div class="card">
                                 <div class="card-horizontal">
                                     <div class="row">
-                                        {{-- <h4 class="px-4" style="font-family: Arial,sans-serif;">Search Results for :
-                                            {{-- {{ $data->search }} --}}
-                                        {{-- </h4> --}}
                                         <p class="px-4">Search result not found!</p>
                                     </div>
                                 </div>
