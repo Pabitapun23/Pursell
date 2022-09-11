@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\FormSubmitted;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -43,6 +44,21 @@ Route::get('/profile', function () {
 //     }
 
 // );
+
+Route::get('/counter', function () {
+    return view('counter');
+});
+Route::get('/sender', function () {
+    return view('sender');
+});
+
+Route::post('/sender', function () {
+    //this is post
+    $text = request()->text;
+    event(new FormSubmitted($text));
+});
+
+
 Route::get('/', [WelcomeController::class, 'displaypost'])->name('welcome');
 Route::get('postform', [PostController::class, 'index'])->name('postform');
 Route::post('subcat', [PostController::class, 'subCat'])->name('subcat');

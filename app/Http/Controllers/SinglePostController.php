@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class SinglePostController extends Controller
@@ -26,9 +27,17 @@ class SinglePostController extends Controller
 
         $posts = Post::with('images', 'user')->where('id', $id)->get();
 
+        $categoryid = DB::table('posts')->where('id', $id)->first()->category_id;
+
+
+        // $categoryid = $posts->category_id;
+        $relatedpost = Post::with('images', 'user')->where('category_id', $categoryid)->where('id', '!=', $id)->get();
+
+        //$relatedpost = DB::table('posts')->where('category_id', $categoryid)->where('id', '!=', $id)->get();
+        //dd($relatedpost);
 
         // dd($posts);
 
-        return view('singlepost', ['posts' => $posts]);
+        return view('singlepost', ['posts' => $posts, 'relatedpost' => $relatedpost]);
     }
 }

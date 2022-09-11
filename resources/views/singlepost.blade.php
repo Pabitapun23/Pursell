@@ -283,17 +283,53 @@
 
             <div class="col-md-3 ">
                 <div class="card" style="width: 100%; height: 95%;background-color: #FDFDFD; margin-top: 40px;">
-                    <div class="subcard" style="width: 95%; height: 50%;background-color: #FDFDFD;">
+                    <div>
+                        <p class="adheading"> Similar Products</p>
+                    </div>
+
+                    <div class="scroll">
                         <div class="row">
 
-                            <p class="adheading"> Similar Products</p>
+                            <!--first col-->
+                            <div class="col-xl-6">
+
+                                @foreach ($relatedpost as $relatedpost)
+                                @foreach ($relatedpost->images->take(1) as $img)
+                                <div class="cardsimi">
+
+                                    <div class="img-square-wrapper">
+                                        <a href="{{ route('singlepost', $relatedpost->id) }}" style="color:#D02020;">
+                                            <img class="responsive" style="max-height:150px; max-width: 100%; box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.25);border-radius: 15px;" src="{{ asset($img->image) }}">
+                                    </div>
+                                    <h4 class="card-title" style="margin-top: 10px;font-size: 15px; font-weight: bolder;">
+                                        {{$relatedpost->title}}
+                                    </h4>
+                                    </a>
+
+                                    <ul class="list-group list-group-horizontal " style="margin-top: -10px;">
+
+                                        <li class="list-group-item border-0" style="color: grey; font-size:12px">{{$relatedpost->condition}}</li>
+                                    </ul>
+
+                                    <ul class="list-group list-group-horizontal " style="margin-top: -10px;">
+                                        <li class="list-group-item border-0" style=" font-size: 12px; font-weight: 700;">{{$relatedpost->price}}</li>
+
+                                    </ul>
+                                </div>
+                                @endforeach
+                                @endforeach
+                            </div>
+
+
+
 
                         </div>
-
                     </div>
+
                 </div>
             </div>
-            @endforeach
+        </div>
+        @endforeach
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>

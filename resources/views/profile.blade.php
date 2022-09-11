@@ -48,10 +48,11 @@
                         <img src="Images/profile.PNG" alt="avatar" class="rounded-circle" me-2 style="width:38px;height:38px;object-fit:cover;">
                     </div> -->
                     <!-- Button trigger modal -->
+                    @if($users->id === \Auth::user()->id)
                     <button type="button" class="btn editbutton" data-bs-toggle="modal" data-bs-target="#addModal">
                         Edit Image
                     </button>
-
+                    @endif
                     <!-- Modal -->
                     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
