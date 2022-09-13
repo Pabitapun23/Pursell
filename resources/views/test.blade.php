@@ -20,3 +20,20 @@
 </div>
 
 </html>
+
+
+
+
+@php
+$notification_count = DB::table('notifications')->where('owner_id', Auth::user()->id)->get()->count();
+$detail =DB::table('notifications')->where('owner_id', Auth::user()->id)->get();
+
+@endphp
+
+@foreach($detail as $comment)
+<a class="dropdown-item" href="">
+    commented on your post
+</a>
+@endforeach
+{{$notification_count }}
+{{$comment->user_id}}

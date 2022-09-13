@@ -9,6 +9,8 @@ use App\Models\Address;
 use App\Models\Condition;
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WelcomeController extends Controller
 {

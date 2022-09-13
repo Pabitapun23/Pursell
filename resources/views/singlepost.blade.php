@@ -72,6 +72,7 @@
                             </div>
                         </ul>
                     </div>
+                    
 
                     <div class="card-body">
                         <div class="row">
@@ -332,6 +333,7 @@
         @endforeach
 
 </body>
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 <!-- Owl Carousel -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -384,8 +386,19 @@
         //add comment function by id
         $('#addCommentBtn').click(function(e) {
             e.preventDefault();
+            // alert(1);
 
             //get data from form
+
+            // var pusher = new Pusher('d3137dd476270dd48d4e', {
+            //     cluster: 'ap1'
+            // });
+            // var channel = pusher.subscribe('channel');
+            // channel.bind('App\\Events\\CommentNotify', function(data) {
+            //     alert(JSON.stringify(data));
+            // });
+
+
 
             var comment = $('#comment').val();
             var id = $('#id').val();

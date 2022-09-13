@@ -38,14 +38,9 @@
 </head>
 
 <body>
-    @auth
     @php
-
     $notification_count = DB::table('notifications')->where('owner_id', Auth::user()->id)->get()->count();
-    $detail =DB::table('notifications')->where('owner_id', Auth::user()->id)->get();
-
     @endphp
-    @endauth
     <div id="app">
         <!--talako bar ko lagi -->
         <ul class="nav nav-fill fixed-bottom d-lg-none pt-2" id="mobile-bottom-navbar" style=" background: #FBF9F9; border-bottom:1px solid #F53535;    box-shadow: 0 0 5px 1px #F53535; height: 55px; ">
@@ -104,7 +99,6 @@
             <a href="/">
                 <img src="{{ asset('images/logo.png') }}" style="height:80px ; width: 85px;margin-right: 139px;margin-top: 0px;margin-bottom: -10px;margin-left: -10px;">
             </a>
-
             <div class="d-lg-flex justify-content-lg-end collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <div class="hori-selector">
@@ -115,7 +109,6 @@
                     <li class="nav-item">
 
                     </li>
-                    @auth
                     <li class="nav-item1">
                         <a class="nav-link" href="javascript:void(0);">
                             <button class="btn1">
@@ -134,32 +127,22 @@
                             </button>
                         </a>
                     </li> -->
-
                     <li class="nav-item2 dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <button class="btn2">
                                 <i class="fa fa-bell" aria-hidden="true">
-                                    <span class="badge badge-danger navbar-badge notification-count">{{$notification_count }}</span>
+                                    <span class="badge badge-danger navbar-badge notification-count">{{$notification_count  }}</span>
                                 </i>
                             </button>
                         </a>
 
-                        <div class="dropdown-content" aria-labelledby="navbarDropdown">
-
-
-                            @foreach($detail as $comment)
-
-                            <a class="dropdown-item" href="{{ route('singlepost', $comment->post_id) }}">
-                                {{$comment->user_id}} commented on your post
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="">
+                                test
                             </a>
 
-                            @endforeach
-
                         </div>
-
                     </li>
-                    @endauth
-
                     <li class="nav-item3">
                         <a class="nav-link" href="{{route('postform')}}">
                             <button class="btn3">

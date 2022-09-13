@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -37,7 +38,13 @@ class SinglePostController extends Controller
         //dd($relatedpost);
 
         // dd($posts);
+        $auth_user = Auth::user();
+        if ($auth_user) {
+            $notification = DB::table('notifications')->where('owner_id', $auth_user->id)->get();
+        }
 
-        return view('singlepost', ['posts' => $posts, 'relatedpost' => $relatedpost]);
+        $notifications = isset($notification) ? $notification : [];
+
+        return view('singlepost', ['posts' => $posts, 'relatedpost' => $relatedpost, 'notifications' => $notifications]);
     }
 }

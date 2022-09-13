@@ -172,7 +172,6 @@
                                         </div> -->
                                         <div class="form-row pt-3 mx-2">
                                             <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Description*" required>
-
                                             </textarea>
                                             <label for="formFile" class="form-label">Add all products and service
                                                 specifications.</label>
