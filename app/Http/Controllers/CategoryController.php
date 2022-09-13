@@ -40,7 +40,8 @@ class CategoryController extends Controller
 
     public function index($catname)
     {
-        $categoryitem = Category::with('posts')->where('name', '=', $catname)->get();
+
+        $categoryitem = Category::where('name', '=', $catname)->get();
         //$products = $categoryitem->posts()->orderBy('created_at')->paginate(12);
         return view('categorydisplaypost', ['categoryitem' => $categoryitem]);
         //dd($categoryitem);
