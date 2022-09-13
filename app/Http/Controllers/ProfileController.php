@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\RateAndReview;
+use App\Models\ReportUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,15 +19,37 @@ class ProfileController extends Controller
     public function displayprofile($id)
     {
         $users = User::find($id);
-
-
         $posts = $users->post()->get();
-        //dd($posts);
 
+        $myRating = null;
+        $myReport = null;
+        if (auth()->user()) {
+            $myRating = RateAndReview::where('user_id', $users->id)->where('reviewer_id', auth()->user()->id)->first();
+            $myReport = ReportUser::where('user_id', $users->id)->where('reporter_id', auth()->user()->id)->first();
+        }
+
+        $rating = RateAndReview::where('user_id', $users->id)->get();
+        $rating_sum = RateAndReview::where('user_id', $users->id)->sum('rating');
+
+        if ($rating->count() > 0) {
+            $rating_value = $rating_sum / $rating->count();
+        } else {
+            $rating_value = 0;
+        }
+
+        $report = ReportUser::where('user_id', $users->id)->get();
+        // $report_sum = ReportUser::where('user_id', $users->id)->sum('report');
+        // if($report->count() > 0)
+        // {
+        //     $report_sum = ReportUser::where('user_id', $users->id)->sum('user_id');
+        // }
+
+        //dd($report);
         // dd($users);
 
-        return view('profile', compact("users", "posts"));
+        return view('profile', compact("users", "posts", 'id', "rating", "report", "rating_value", 'myRating', 'myReport'));
     }
+
     public function deletepost($id)
     {
         $data = Post::find($id);
@@ -34,9 +58,6 @@ class ProfileController extends Controller
 
         return back()->with('success', 'Post deleted successfully!');
     }
-
-
-
 
     function showinForm($id)
     {

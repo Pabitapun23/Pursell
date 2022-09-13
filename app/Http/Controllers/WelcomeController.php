@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Address;
 use App\Models\Condition;
 use App\Models\Organization;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class WelcomeController extends Controller
     // display post in the homepage
     function displaypost()
     {
-
+        $users = User::all();
 
         $categories = Category::where('parent_id', 0)->get();
 
@@ -38,6 +39,6 @@ class WelcomeController extends Controller
 
         //dd($condition);
 
-        return view('welcome', compact("categories", "subcategories", "addresses", "conditions", "organizations", "posts", "popularpost"));
+        return view('welcome', compact("users", "categories", "subcategories", "addresses", "conditions", "organizations", "posts", "popularpost"));
     }
 }

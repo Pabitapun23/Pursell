@@ -13,6 +13,8 @@ use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RateAndReviewController;
+use App\Http\Controllers\ReportUserController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -100,3 +102,8 @@ Route::get('displaycat/{catname}', [CategoryController::class, 'index'])->name('
 
 Route::get('/donation-page', [OrganizationController::class, 'organizationData']);
 Route::get('/donation-view/{id}', [OrganizationController::class, 'orgDetail']);
+
+Route::group(['middleware'  => ['isUser']], function () {
+    Route::post('/user/{id}/rate', [RateAndReviewController::class, 'addRating'])->name('user-rate');
+    Route::post('/user/{id}/report', [ReportUserController::class, 'reportUser'])->name('reportUser');
+});

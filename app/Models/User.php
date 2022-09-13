@@ -52,6 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Post::class, 'user_id');
     }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -60,5 +61,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function category()
     {
         return $this->hasMany(Category::class, 'category_id');
+    }
+
+    public function rate_and_review()
+    {
+        return $this->hasMany(RateAndReview::class, 'user_id');
+    }
+
+    public function report_user()
+    {
+        return $this->hasMany(ReportUser::class, 'user_id');
     }
 }

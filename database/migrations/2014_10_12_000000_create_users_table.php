@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('profileimg')->nullable();
+            $table->boolean('block_status')->default(0);
+            $table->bigInteger('block_amount')->default(0);
             $table->timestamps();
         });
     }

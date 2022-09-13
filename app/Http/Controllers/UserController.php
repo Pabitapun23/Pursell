@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReportUser;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -15,9 +16,10 @@ class UserController extends Controller
     {
         return view('dashboards.users.index');
     }
-    function profile()
+    function profile($id)
     {
-        return view('dashboards.users.profile');
+        // $report = ReportUser::where('user_id', $id)->withCount('user_id');
+        return view('dashboards.users.profile', compact("users"));
     }
     function setting()
     {
