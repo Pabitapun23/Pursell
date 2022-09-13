@@ -3,21 +3,27 @@
 
 <head>
   <title>Pusher Test</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-  <script>
-    // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
 
-    var pusher = new Pusher('d3137dd476270dd48d4e', {
-      cluster: 'ap1'
-    });
+<body>
+  <p>
 
-    var channel = pusher.subscribe('my-channel');
-    channel.bind('form-submitted', function(data) {
-      alert(JSON.stringify(data));
-    });
-  </script>
+  </p>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script>
+  // Enable pusher logging - don't include this in production
+  Pusher.logToConsole = true;
+
+  var pusher = new Pusher('d3137dd476270dd48d4e', {
+    cluster: 'ap1'
+  });
+
+  var channel = pusher.subscribe('my-channel');
+  channel.bind('form-submitted', function(data) {
+    $('p').append('<p>' + JSON.stringify(data) + '</p>');
+  });
+</script>
 </head>
 
 <body>

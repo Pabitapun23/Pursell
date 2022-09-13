@@ -41,7 +41,7 @@
     @auth
     @php
 
-    $notification_count = DB::table('notifications')->where('owner_id', Auth::user()->id)->get()->count();
+    $notification_count = DB::table('notifications')->where('owner_id', Auth::user()->id)->where('read',0)->get()->count();
     $detail =DB::table('notifications')->where('owner_id', Auth::user()->id)->get();
 
     @endphp
@@ -135,13 +135,18 @@
                         </a>
                     </li> -->
 
-                    <li class="nav-item2 dropdown">
+                    <!-- <li class="nav-item2 dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <button class="btn2">
+
                                 <i class="fa fa-bell" aria-hidden="true">
+
                                     <span class="badge badge-danger navbar-badge notification-count">{{$notification_count }}</span>
+
                                 </i>
+
                             </button>
+
                         </a>
 
                         <div class="dropdown-content" aria-labelledby="navbarDropdown">
@@ -157,8 +162,30 @@
 
                         </div>
 
-                    </li>
+                    </li> -->
+                    <!-- <li class="nav-item2"> -->
+                    <div class=" dropdown show">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bell" aria-hidden="true">
+
+                                <span class="badge badge-danger navbar-badge notification-count">{{$notification_count }}</span>
+
+                            </i>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{route('read')}}"> Mark all as read</a>
+                            @foreach($detail as $comment)
+                            <a class="dropdown-item" href="{{ route('notifyseen',$comment->id) }}">
+                                {{$comment->name}} commented on your post
+                            </a>
+
+                            @endforeach
+
+                        </div>
+                    </div>
                     @endauth
+                    <!-- </li> -->
 
                     <li class="nav-item3">
                         <a class="nav-link" href="{{route('postform')}}">

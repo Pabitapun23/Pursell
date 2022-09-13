@@ -41,4 +41,8 @@ class WelcomeController extends Controller
 
         return view('welcome', compact("users", "categories", "subcategories", "addresses", "conditions", "organizations", "posts", "popularpost"));
     }
+    function updatenotification()
+    {
+        DB::table('notififcations')->where('owner_id', Auth::user()->id)->update(['read' => 1]);
+    }
 }

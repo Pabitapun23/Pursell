@@ -47,4 +47,24 @@ class SinglePostController extends Controller
 
         return view('singlepost', ['posts' => $posts, 'relatedpost' => $relatedpost, 'notifications' => $notifications]);
     }
+
+    public function notifyseen($id)
+    {
+        DB::table('notifications')->where('id', $id)->where('owner_id', Auth::user()->id)->update(['read' => 1]);
+        $postId = DB::table('notifications')->where('id', $id)->first();
+
+        $posts = Post::with('images', 'user')->where('id', $postId->post_id)->get();
+        $categoryid = DB::table('posts')->where('id', $postId->post_id)->first()->category_id;
+
+        $relatedpost = Post::with('images', 'user')->where('category_id', $categoryid)->where('id', '!=', $postId->post_id)->get();
+
+
+        return view('singlepost', ['posts' => $posts, 'relatedpost' => $relatedpost]);
+    }
+
+    public function read()
+    {
+        DB::table('notifications')->where('owner_id', Auth::user()->id)->update(['read' => 1]);
+        return redirect()->back();
+    }
 }

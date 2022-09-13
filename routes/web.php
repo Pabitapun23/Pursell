@@ -67,7 +67,14 @@ Route::post('subcat', [PostController::class, 'subCat'])->name('subcat');
 // Route::get('addpost', [PostController::class, 'addpost'])->name('addpost');
 Route::post('addpost', [PostController::class, 'addpost'])->name('addpost');
 
+Route::post('seen', [WelcomeController::class, 'updatenotification'])->name('seen');
+
+Route::get('/markread', [SinglePostController::class, 'read'])->name('read');
+
+
 Route::get('singlepost/{id}', [SinglePostController::class, 'singlepost'])->name('singlepost');
+
+Route::get('notification/{id}', [SinglePostController::class, 'notifyseen'])->name('notifyseen');
 
 Route::post('singlepost/{id}', [CommentController::class, 'addComment'])->name('comment');
 

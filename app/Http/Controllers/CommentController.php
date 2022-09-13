@@ -61,9 +61,12 @@ class CommentController extends Controller
         // $pusher->trigger('channel', 'App\\Events\\CommentNotify', $data);
 
         if (Auth::user()->email != $userEmail) {
+            $name = explode(" ", Auth::user()->name);
+
             $owner = DB::table('users')->where('id', $post->user_id)->first()->name;
             $ownerid = DB::table('users')->where('id', $post->user_id)->first()->id;
-            $commented_by = Auth::user()->name;
+
+            $commented_by = $name[0];
             $commented_id = Auth::user()->id;
             $data = ['owner' => $owner, 'commented_by' => $commented_by, 'post_id' => $id, 'title' => $post->title];
 
@@ -74,6 +77,7 @@ class CommentController extends Controller
                 'post_id' => $id,
                 'user_id' => $commented_id,
                 'comment' => $request->comment,
+                'name' => $commented_by
 
             ]);
         }
