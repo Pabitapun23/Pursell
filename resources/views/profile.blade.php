@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        {{-- <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
                 <path
                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
@@ -27,6 +27,13 @@
             <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
                 <path
                     d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+        </svg> --}}
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
             </symbol>
         </svg>
 
@@ -105,38 +112,29 @@
             </div>
         </div>
 
-        <div class="container mt-0">
+        <div class="profile-container mt-0">
             @if (session('status'))
                 <div class="alert alert-success text-white" role="alert">
                     {{ session('status') }}
                 </div>
             @endif
-            <div class="row my-3 mx-5 justify-content-around">
+            <div class="row my-3 mx-5 mb-5 justify-content-around">
                 <div class="col-lg-5 col-12">
                     <div
-                        class="content shadow ms-3 mt-3 px-5 py-5 ps-2 bg-body rounded
-              justify-content-center">
+                        class="profile-content shadow ms-3 mt-3 px-5 pb-5 pt-3 ps-2 bg-body rounded justify-content-center">
                         <div>
                             @if ($users->profileimg == null)
-                                <img src="{{ URL::asset('/images/user.png') }}" alt="avatar" class="rounded-circle"
-                                    me-2 style="width:50px;height:50px;object-fit:cover;">
+                                <img src="{{ URL::asset('/images/user.png') }}" alt="avatar"
+                                    class="rounded-circle ms-3" style="width:100px;height:100px;object-fit:cover;">
                             @else
-                                <img src="/postimage/{{ $users->profileimg }}" alt="avatar" class="rounded-circle" me-2
+                                <img src="/postimage/{{ $users->profileimg }}" alt="avatar" class="rounded-circle ms-3"
                                     style="width:50px;height:50px;object-fit:cover;">
                             @endif
                         </div>
-                        <!-- <div>
-                                                        <img src="Images/profile.PNG" alt="avatar" class="rounded-circle" me-2 style="width:38px;height:38px;object-fit:cover;">
-                                                    </div> -->
-                        <!-- Button trigger modal -->
-                        {{-- @if ($users->id === \Auth::user()->id)
-                            <button type="button" class="btn editbutton" data-bs-toggle="modal"
-                                data-bs-target="#addModal">
-                                Edit Image
-                            </button>
-                        @endif --}}
 
-                        <button type="button" class="btn editbutton" data-bs-toggle="modal" data-bs-target="#addModal">
+                        <button type="button" class="btn editbutton ms-3" data-bs-toggle="modal"
+                            data-bs-target="#addModal"
+                            style="background-color: #f38d09; color:white; font-family:Roboto;">
                             Edit Image
                         </button>
 
@@ -170,24 +168,23 @@
                             </div>
                         </div>
 
-                        <!-- <img src="Images/profile.PNG" class="img-fluid rounded-circle
-                ms-4">
-                                                    <div class="d-grid gap-2 d-md-block pt-3 ps-3 ms-2">
-                                                        <button class="editbutton" type="button">Edit</button>
-                                                    </div>
-                                                    <br> -->
-                        <hr>
+                        <hr class="ms-3">
                         <div class="d-grid gap-2 d-md-block ps-4 ms-2">
-                            <p class="p-0">{{ $users->name }}</p>
+                            <h4 class="p-0">{{ $users->name }}</h4>
                         </div>
                         <div class="d-grid gap-2 d-md-block ps-4 ms-2">
-                            <p class="p-0">{{ $users->phoneno }}</p>
+                            <p class="p-0"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    fill="#d02020" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                </svg> &nbsp; <span style="color: gray;">{{ $users->phoneno }}</span></p>
                         </div>
                         <div class="d-grid gap-2 d-md-block ps-4 ms-2">
-                            <p class="p-0">Member since: {{ $users->created_at->diffForHumans() }}</p>
+                            <p class="p-0">Member since: <span
+                                    style="color: gray;">{{ $users->created_at->diffForHumans() }}</span></p>
                         </div>
 
-                        <div class="d-grid gap-2 d-md-block ps-2 ms-2">
+                        <div class="d-grid gap-2 d-md-block ps-4 ms-2">
                             @php $ratenum = number_format($rating_value) @endphp
                             <div class="rating p-0">
                                 @for ($i = 1; $i <= $ratenum; $i++)
@@ -210,7 +207,7 @@
 
                         {{-- Rating and Review Pop-up modal button --}}
                         @if (!auth()->user() || auth()->user()->id != $id)
-                            <div class="d-grid gap-2 d-md-block ps-2 ms-2 pt-3">
+                            <div class="d-grid gap-2 d-md-block ps-4 ms-2 pt-3 mt-2">
                                 @if (!auth()->user())
                                     <a href="http://127.0.0.1:8000/login"><button type="button" class="btn"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -236,29 +233,31 @@
                     </div>
                 </div>
 
-                <div class="col-lg-7 col-12" style="margin-top:50px ;">
+                <div class="col-lg-7 col-12">
                     <div class="content shadow p-3 ms-3 mt-3 me-2 bg-body rounded justify-content-center">
-                        <div class="tab row ps-2">
-                            <div class="col-lg-2 col-4">
-                                <button class="tablinks" onclick="openCity(event, 'Ad_post')">Ad
-                                    post</button>
+                        <div class="tab row">
+                            <div class="col-lg-4 col-4">
+                                <button class="tablinks px-3" onclick="openCity(event, 'Ad_post')">
+                                    <h4> Ad Post </h4>
+                                </button>
                             </div>
-                            <div class="col-lg-2 col-4">
-                                <button class="tablinks" onclick="openCity(event, 'Saved')">Saved
-                                    List</button>
+                            <div class="col-lg-4 col-4">
+                                <button class="tablinks" onclick="openCity(event, 'Saved')">
+                                    <h4>Saved List </h4>
+                                </button>
                             </div>
-                            <hr>
+                            <hr class="mx-3" style="width: 90%;">
                         </div>
 
                         <div class="tabcontent" id="Ad_post">
                             <div class="row justify-content-around" style="margin-top:10px ;">
                                 <div class="col-4 rounded bg-light text-center px-4 py-3">
-                                    <p>Total Ads ({{ $posts->count() }})</p>
+                                    <p style="margin-bottom: 3px; color:gray;">Total Ads ({{ $posts->count() }})</p>
                                 </div>
                                 <div class="col-4 rounded bg-light text-center px-4 py-3">
                                     {{-- <p>Reported (0)</p> --}}
 
-                                    <span style="color: gray">
+                                    <span style="color: gray; padding-bottom:2px;">
                                         @if ($report->count() < 0)
                                             Reported (0)
                                         @else
@@ -287,94 +286,89 @@
                                             </div>
                                         @endif
 
-
                                         @foreach ($posts as $post)
                                             @foreach ($post->images->take(1) as $img)
                                                 <div class="col-lg-4 col-12 justify-content-center">
-
                                                     <div class="card m-1">
                                                         <a href="{{ route('singlepost', $post->id) }}"
-                                                            style="color:#D02020;">
+                                                            style="color:#D02020; text-decoration:none;">
                                                             <img class="card-img-top " src="{{ asset($img->image) }}"
-                                                                alt="" style="object-fit:cover">
+                                                                alt="" style="object-fit:cover; height:15vh;">
                                                             <div class="card-body">
 
                                                                 <h5 class="card-title">{{ $post->title }}</h5>
-                                                        </a>
-                                                        <p class="card-text" style="font-style:italic;">
-                                                            {{ $post->condition }} <br> Used For
-                                                            {{ $post->usedfor }}
-                                                        </p>
-                                                        <b>
-                                                            <p class="card-text" style="color:#D02020;">Rs.
-                                                                {{ $post->price }}</p>
-                                                        </b>
-                                                        {{-- @if ($post->user->id === \Auth::user()->id)
-                                                            <a href="{{ route('editpost', $post->id) }}">
-                                                                <button type="button">Edit</button>
-                                                            </a>
-                                                            <a href="{{ route('deletepost', $post->id) }}">
-                                                                <button type="button">Delete</button>
-                                                            </a>
-                                                        @endif --}}
 
-                                                        @if (\Auth::user() && $post->user->id === \Auth::user()->id)
-                                                            <a href="{{ route('editpost', $post->id) }}">
-                                                                <button type="button">Edit</button>
-                                                            </a>
-                                                            <a href="{{ route('deletepost', $post->id) }}">
-                                                                <button type="button">Delete</button>
-                                                            </a>
-                                                        @endif
+                                                                <p class="card-text"
+                                                                    style="font-style:italic; color:gray; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                                                                    {{ $post->condition }} <br> Used For
+                                                                    {{ $post->usedfor }}
+                                                                </p>
+
+                                                                <p class="card-text" style="color:black;">Rs.
+                                                                    {{ $post->price }}</p>
+
+                                                                @if (\Auth::user() && $post->user->id === \Auth::user()->id)
+                                                                    <a href="{{ route('editpost', $post->id) }}"
+                                                                        style="text-decoration: none;">
+                                                                        <button type="button"
+                                                                            class="btn btn-success p-2 py-1 mt-1"
+                                                                            style="font-size: 10px;">Edit</button>
+                                                                    </a>
+                                                                    &nbsp;
+                                                                    <a href="{{ route('deletepost', $post->id) }}"
+                                                                        style="text-decoration: none;">
+                                                                        <button type="button"
+                                                                            class="btn btn-danger p-2 py-1 mt-1"
+                                                                            style="font-size: 10px;">Delete</button>
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                        </a>
 
                                                     </div>
                                                 </div>
+                                            @endforeach
+                                        @endforeach
                                     </div>
-                                    @endforeach
-                                    @endforeach
-
-
                                 </div>
 
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="tabcontent" id="Saved" style="display: none;">
-                        <div class="row justify-content-center mx-3 my-3">
-                            <div class="col-12 rounded bg-light px-3 py-2" style="margin-top:20px ;">
-                                <div class="row">
-                                    <div class="col-lg-4 col-12 justify-content-center">
-                                        <div class="card m-1">
-                                            <img src="Images/profile.PNG" class="card-img-top" alt="..."
-                                                style="height: 8vh;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to
-                                                    build</p>
+                        <div class="tabcontent" id="Saved" style="display: none;">
+                            <div class="row justify-content-center mx-3 my-3">
+                                <div class="col-12 rounded bg-light px-3 py-2" style="margin-top:20px ;">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-12 justify-content-center">
+                                            <div class="card m-1">
+                                                <img src="Images/profile.PNG" class="card-img-top" alt="..."
+                                                    style="height:15vh;">
+                                                <div class="card-body" style="height: 15vh;">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to
+                                                        build</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-12 justify-content-flex-center">
-                                        <div class="card m-1">
-                                            <img src="Images/profile.PNG" class="card-img-top" alt="..."
-                                                style="height: 8vh;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title lamooooooooooooo</h5>
-                                                <p class="card-text">Some quick example text to
-                                                    build</p>
+                                        <div class="col-lg-4 col-12 justify-content-flex-center">
+                                            <div class="card m-1">
+                                                <img src="Images/profile.PNG" class="card-img-top" alt="..."
+                                                    style="height: 15vh;">
+                                                <div class="card-body" style="height: 15vh;">
+                                                    <h5 class="card-title">Card title lamooooooooooooo</h5>
+                                                    <p class="card-text">Some quick example text to
+                                                        build</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-12 justify-content-flex-center">
-                                        <div class="card m-1">
-                                            <img src="Images/profile.PNG" class="card-img-top" alt="..."
-                                                style="height: 8vh;">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to
-                                                    build</p>
+                                        <div class="col-lg-4 col-12 justify-content-flex-center">
+                                            <div class="card m-1">
+                                                <img src="Images/profile.PNG" class="card-img-top" alt="..."
+                                                    style="height: 15vh;">
+                                                <div class="card-body" style="height: 15vh;">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">Some quick example text to
+                                                        build</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -382,29 +376,11 @@
                             </div>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
-        </div>
-
-
-
-        <!-- footer -->
-        <div class="footer-basic">
-            <footer>
-                <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
-                            class="icon ion-social-snapchat"></i></a><a href="#"><i
-                            class="icon ion-social-twitter"></i></a><a href="#"><i
-                            class="icon ion-social-facebook"></i></a></div>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="#">Home</a></li>
-                    <li class="list-inline-item"><a href="#">Services</a></li>
-                    <li class="list-inline-item"><a href="#">About</a></li>
-                    <li class="list-inline-item"><a href="#">Contact</a></li>
-                    <li class="list-inline-item"><a href="#">Something</a></li>
-                    <li class="list-inline-item"><a href="#">Bla Bla</a></li>
-                </ul>
-                <p class="copyright">PURSELL © 2021</p>
-            </footer>
         </div>
 
 
