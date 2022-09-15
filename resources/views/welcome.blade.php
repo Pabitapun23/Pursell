@@ -133,7 +133,7 @@
                                 {{-- <div class="row bg-body" style="width: 100%;">
                                     <div class="col-12 col-md-3"> --}}
 
-                                <ul class="list-group list-group-flush py-2">
+                                <ul class="list-group list-group-flush pb-3">
                                     {{-- <li class="h1">CATEGORIES</li> --}}
                                     <h4 class="px-3" style="color: #D02020; padding-top:30px;">All Categories</h4>
                                     <hr style="width: 95%; margin-top: 5px;">
@@ -145,9 +145,11 @@
                                                     <div class="dropdown-content" x-placement="right-start">
                                                         @foreach ($subcategories as $sub)
                                                             @if ($sub->parent_id == $cat->id)
-                                                                <button class="dropbtn px-2 py-3"><a
-                                                                        href="{{ route('displaycat', $sub->name) }}"
-                                                                        style="width: 300px;">{{ $sub->name }}</a>
+                                                                <button class="dropbtn px-2 py-3">
+                                                                    <a href="{{ route('displaycat', $sub->name) }}"
+                                                                        style="width: 300px;" class="ps-3">
+                                                                        {{ $sub->name }}
+                                                                    </a>
                                                                 </button>
                                                             @endif
                                                         @endforeach
@@ -227,26 +229,26 @@
 
                             <!-- desktop ko lai -->
 
-                            <div class="d-flex position-relative mt-2 owl-carousel owl-theme">
+                            <div class="d-flex position-relative mt-2 mb-3 owl-carousel owl-theme">
                                 @foreach ($posts as $post)
                                     @foreach ($post->images->take(1) as $img)
-                                        <div class="card mx-2 pb-3" style="height: 100%; ">
+                                        <div class="card mx-2" style="height: 100%; ">
                                             <a href="{{ route('singlepost', $post->id) }}"
                                                 style="color:#D02020; text-decoration:none;">
                                                 <img class="card-img-top " src="{{ asset($img->image) }}" alt=""
                                                     style="height: 20vh">
-                                                <div class="card-body" style="height: 25vh;">
+                                                <div class="card-body">
                                                     <h5 class="card-title" style="color:#D02020;">
                                                         {{ $post->title }}
                                                     </h5>
-                                                    <p class="card-text" style="font-style:italic; color:gray;">
+                                                    <p style="font-style:italic; color:gray; font-size:13px;">
                                                         {{ $post->condition }}
                                                         <br>
                                                         Used For
                                                         {{ $post->usedfor }}
                                                     </p>
 
-                                                    <h6 class="card-text text-bold pb-2" style="color:#D02020;">Rs.
+                                                    <h6 class="text-bold" style="color:#D02020;">Rs.
                                                         {{ $post->price }}
                                                     </h6>
 
@@ -306,7 +308,24 @@
             </div>
         </div>
 
+        <!-- footer -->
+        <footer>
+            <div class="footer-basic">
+                <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+                            class="icon ion-social-snapchat"></i></a><a href="#"><i
+                            class="icon ion-social-twitter"></i></a><a href="#"><i
+                            class="icon ion-social-facebook"></i></a></div>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Home</a></li>
+                    <li class="list-inline-item"><a href="#">Services</a></li>
+                    <li class="list-inline-item"><a href="#">About</a></li>
+                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                    <li class="list-inline-item"><a href="#">Something</a></li>
 
+                </ul>
+                <p class="copyright">PURSELL © 2021</p>
+            </div>
+        </footer>
 
     </body>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

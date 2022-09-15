@@ -493,7 +493,7 @@ ul {
 .dropdown-content a {
     transition: all 0.5s;
     color: black;
-    padding: 12px 16px;
+    padding: 5px;
     text-decoration: none;
     display: inline;
 }
@@ -565,4 +565,79 @@ ul {
     background: #d02020;
     border-radius: 3px;
     box-shadow: 3px 2px 4px rgba(252, 66, 66, 0.5);
+}
+
+.card-title {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+/* .card-title:hover {
+    overflow: visible;
+    -webkit-line-clamp: 2;
+} */
+
+.footer-basic {
+    padding: 40px 0;
+    background-color: #d02020;
+    color: white;
+}
+
+.footer-basic ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.footer-basic li {
+    padding: 0 10px;
+}
+
+.footer-basic ul a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer-basic ul a:hover {
+    opacity: 1;
+}
+
+.footer-basic .social {
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.footer-basic .social > a {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin: 0 8px;
+    color: white;
+    opacity: 0.75;
+}
+
+.footer-basic .social > a:hover {
+    opacity: 0.9;
+}
+
+.footer-basic .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0;
 }

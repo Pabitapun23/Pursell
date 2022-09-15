@@ -46,7 +46,7 @@
                 <div class="modal-content">
                     <form action="{{ route('user-rate', ['id' => $id]) }}" method="POST">
                         @csrf
-                        {{-- <input type="hidden" name="user_id" value="{{ $users->id }}"> --}}
+
                         <input name="user_id" hidden value={{ app('request')->get('user_id') }} />
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Ratings and Review</h5>
@@ -127,16 +127,19 @@
                                 <img src="{{ URL::asset('/images/user.png') }}" alt="avatar"
                                     class="rounded-circle ms-3" style="width:100px;height:100px;object-fit:cover;">
                             @else
-                                <img src="/postimage/{{ $users->profileimg }}" alt="avatar" class="rounded-circle ms-3"
-                                    style="width:50px;height:50px;object-fit:cover;">
+                                <img src="/postimage/{{ $users->profileimg }}" alt="avatar"
+                                    class="rounded-circle ms-4 mt-3" style="width:80px;height:80px;object-fit:cover;">
                             @endif
                         </div>
 
-                        <button type="button" class="btn editbutton ms-3" data-bs-toggle="modal"
-                            data-bs-target="#addModal"
-                            style="background-color: #f38d09; color:white; font-family:Roboto;">
-                            Edit Image
-                        </button>
+                        {{-- @if (\Auth::user() && $posts->user->id === \Auth::user()->id) --}}
+                        @if (auth()->user()->id == $id)
+                            <button type="button" class="btn editbutton ms-3 mt-2" data-bs-toggle="modal"
+                                data-bs-target="#addModal"
+                                style="background-color: #f38d09; color:white; font-family:Roboto;">
+                                Edit Image
+                            </button>
+                        @endif
 
                         <!-- Modal -->
                         <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel"
@@ -154,11 +157,9 @@
                                         <div class="modal-body">
                                             <div>
                                                 <p><b>Add Profile Picture </b></p>
-
                                                 <input class="form-control" type="file" id="profileFile"
                                                     name="profileimg">
                                             </div>
-
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-danger w">Update Profile</button>
@@ -381,6 +382,24 @@
 
                 </div>
             </div>
+            <!-- footer -->
+            <footer>
+                <div class="footer-basic">
+                    <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a
+                            href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i
+                                class="icon ion-social-twitter"></i></a><a href="#"><i
+                                class="icon ion-social-facebook"></i></a></div>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Home</a></li>
+                        <li class="list-inline-item"><a href="#">Services</a></li>
+                        <li class="list-inline-item"><a href="#">About</a></li>
+                        <li class="list-inline-item"><a href="#">Contact</a></li>
+                        <li class="list-inline-item"><a href="#">Something</a></li>
+
+                    </ul>
+                    <p class="copyright">PURSELL © 2021</p>
+                </div>
+            </footer>
         </div>
 
 
