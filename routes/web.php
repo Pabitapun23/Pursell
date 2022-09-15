@@ -3,6 +3,7 @@
 use App\Events\FormSubmitted;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SinglePostController;
@@ -54,11 +55,16 @@ Route::get('/sender', function () {
     return view('sender');
 });
 
-Route::post('/sender', function () {
-    //this is post
-    $text = request()->text;
-    event(new FormSubmitted($text));
-});
+// Route::post('/sender', function () {
+//     //this is post
+//     $text = request()->text;
+
+//     event(new FormSubmitted($text));
+// });
+
+Route::post('/sender', [TestController::class, 'test'])->name('test');
+
+Route::post('/chat', [ChatController::class, 'chat'])->name('chat');
 
 
 Route::get('/', [WelcomeController::class, 'displaypost'])->name('welcome');
@@ -114,3 +120,18 @@ Route::group(['middleware'  => ['isUser']], function () {
     Route::post('/user/{id}/rate', [RateAndReviewController::class, 'addRating'])->name('user-rate');
     Route::post('/user/{id}/report', [ReportUserController::class, 'reportUser'])->name('reportUser');
 });
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+// Route::post('/sendmessage', [TestController::class, 'test'])->name('sendmessage');
+
+
+// Route::post('/sendemessage', function () {
+//     //this is post
+//     $name = request()->username;
+//     $message = request()->message;
+//     event(new FormSubmitted($name, $message));
+//     return ["success" => true];
+// });

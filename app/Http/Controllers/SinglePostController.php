@@ -67,4 +67,6 @@ class SinglePostController extends Controller
         DB::table('notifications')->where('owner_id', Auth::user()->id)->update(['read' => 1]);
         return redirect()->back();
     }
+
+   
 }

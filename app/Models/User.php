@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Chat;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -71,5 +72,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function report_user()
     {
         return $this->hasMany(ReportUser::class, 'user_id');
+    }
+
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
     }
 }

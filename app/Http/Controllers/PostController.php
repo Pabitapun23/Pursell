@@ -48,7 +48,7 @@ class PostController extends Controller
 
     public function addpost(Request $request)
     {
-        // dd($request->all());
+        dd($request->all());
         $request->validate([
             'title' => 'required|string|max:255',
             //'images' => 'required',

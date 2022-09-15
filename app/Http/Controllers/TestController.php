@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Events\FormSubmitted;
 
+use App\Events\FormSubmitted;
+use App\Events\Message;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -25,9 +26,16 @@ class TestController extends Controller
     //     // dd($comment);
     // }
 
-    public function test()
+    // public function test(Request $request)
+    // {
+    //     $username = $request->username;
+    //     $message = $request->message;
+    //     event(new Message($username,$message));
+    // }
+
+    public function test(Request $request)
     {
-        $text = request()->text;
+        $text = $request->text;
         event(new FormSubmitted($text));
     }
 }

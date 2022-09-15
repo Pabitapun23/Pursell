@@ -5,9 +5,7 @@
   <title>Pusher Test</title>
 
 <body>
-  <p>
-
-  </p>
+  
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
@@ -21,7 +19,7 @@
 
   var channel = pusher.subscribe('my-channel');
   channel.bind('form-submitted', function(data) {
-    $('p').append('<p>' + JSON.stringify(data) + '</p>');
+    $('p').append('<p>' + JSON.stringify(data.text) + '</p>');
   });
 </script>
 </head>
