@@ -1,156 +1,125 @@
-
-
-.card{
+.card {
     box-shadow: 3px 1px 2px 1px rgb(255, 119, 119);
 }
 
-.card-title{
+.card-title {
     margin-top: 10px;
     margin-left: -5px;
 }
 
-.card-text{
-    color:black;
-    font-family:'Alegreya Sans SC';
+.card-text {
+    color: black;
+    font-family: "Alegreya Sans SC";
     font-size: 18px;
-   
-
 }
 
-
-
-
-.list-group{
-   margin-top: 10px;
- 
+.list-group {
+    margin-top: 10px;
 }
 
-
-
-.text{
-   
+.text {
     padding-left: 20px;
-    
-  
-    
 }
-.commentname{
-    font-weight:bold; margin-top:10px; margin-bottom:10px;
+.commentname {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-.ajaxcomm{
+.ajaxcomm {
     border: 0.1px solid rgb(210, 210, 210);
-  
-  
 }
-
-
-
 
 .profile {
-    background-color: rgb(216, 216, 218);
-    height: 60px;
+    /* background-color: rgb(216, 216, 218); */
+    margin-top: 0px;
+    height: 40px;
     width: 60px;
     border-radius: 50%;
     border: none;
     transition: all 0.5s;
     margin-left: -6px;
-    
-
-
-    
 }
 
-
-.btnad{
+.btnad {
     border: none;
     width: 82px;
     cursor: pointer;
-    font-family:'Alegreya Sans SC';
-  
+    font-family: "Alegreya Sans SC";
     background-color: rgb(255, 255, 255);
     border: none;
-    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25); 
-    color:#D02020;
+    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+    color: #d02020;
     margin-bottom: 10px;
-
 }
 
-.btnad:hover{
+.btnad:hover {
     transform: scale(1.1);
 }
 
-
-
-.btnotherad{
+.btnotherad {
     border: none;
     width: 82px;
     cursor: pointer;
-    font-family:'Alegreya Sans SC';
+    font-family: "Alegreya Sans SC";
     background-color: rgb(255, 255, 255);
-
 }
-.btnotherad:hover{
+.btnotherad:hover {
     transform: scale(1.1);
 }
 
-.phn{
-    font-family:'Alegreya Sans SC';
+.phn {
+    font-family: "Alegreya Sans SC";
     font-size: 12px;
     margin-left: 10px;
     margin-top: -15px;
 }
 
-.adheading{
+.adheading {
     font-size: 28px;
-    font-family:'Alegreya Sans SC';
-    font-style:bold ;
+    font-family: "Alegreya Sans SC";
+    font-style: bold;
     margin: auto;
     margin-top: 10px;
-    text-align:center; 
+    text-align: center;
     vertical-align: middle;
     display: table-cell;
-
 }
 
-.minimal-tabs{
+.minimal-tabs {
     margin-top: 20px;
 }
 
 .nav-tabs {
     border-bottom: none;
     margin-left: 10px;
-  }
+}
 
-  
-  .nav-tabs > li > a:hover {
+.nav-tabs > li > a:hover {
     border: none;
     border-bottom: solid 5px gray;
+}
 
-  }
-  
-  .tab-content {
+.tab-content {
     padding: 10px;
-  }
-  
-  .nav-tabs > li > a {
+}
 
+.nav-tabs > li > a {
     border-radius: 0;
     margin: 0;
     line-height: normal;
     color: grey;
     font-size: 18px;
-  }
-  
-  .nav-tabs > li {
+}
+
+.nav-tabs > li {
     float: left;
     margin-bottom: -1px;
     width: 50%;
- 
-  }
+}
 
-  .cardsimi{
+.cardsimi {
     margin-top: 10px;
-    box-shadow: 0  1px rgb(119, 118, 118);
+    box-shadow: 0 1px rgb(119, 118, 118);
     margin-bottom: 20px;
     width: 97%;
     margin-left: 2px;
@@ -159,14 +128,10 @@
     padding-bottom: 10px;
     cursor: pointer;
     transition: all 0.5s;
-
-
 }
-.cardsimi:hover{
+.cardsimi:hover {
     transform: scale(1.1);
 }
-
-
 
 .bookmark {
     color: green;
@@ -177,25 +142,15 @@
     cursor: pointer;
     transition: all 0.5s;
     background: #ffffff;
-
-
 }
 
 .bookmark:hover {
     transform: scale(1.3);
 }
 
-
-.scroll{
-    max-width:100%;
-    height:900px;
-    overflow-y:scroll;
+.scroll {
+    max-width: 100%;
+    height: 900px;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
-  
-
-
-
-  
-
-
