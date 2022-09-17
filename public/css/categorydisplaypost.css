@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     overflow-x: hidden;
-    padding: 0px;
+    /* margin-bottom: 10px; */
 }
 
 /* .card-img-top {
@@ -25,6 +25,11 @@ h3 {
     color: #d02020;
 }
 
+h5 {
+    font-size: 18px;
+    padding-top: 3px;
+}
+
 .card-title {
     -webkit-box-orient: vertical;
     display: -webkit-box;
@@ -34,13 +39,16 @@ h3 {
     white-space: normal;
     transition: all 0.5s;
     cursor: pointer;
-    margin-bottom: 50px;
+    height: 20px;
+    margin-top: 0;
+    margin-bottom: 25px;
 }
 
 .footer-basic {
-    padding: 40px 0;
+    padding: 40px;
     background-color: #d02020;
     color: white;
+    height: 35vh;
 }
 
 .footer-basic ul {

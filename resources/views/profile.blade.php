@@ -383,8 +383,9 @@
                 </div>
             </div>
             <!-- footer -->
-            <footer>
-                <div class="footer-basic">
+
+            <div class="footer-basic">
+                <footer>
                     <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a
                             href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i
                                 class="icon ion-social-twitter"></i></a><a href="#"><i
@@ -398,8 +399,9 @@
 
                     </ul>
                     <p class="copyright">PURSELL © 2021</p>
-                </div>
-            </footer>
+                </footer>
+            </div>
+
         </div>
 
 

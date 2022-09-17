@@ -1,20 +1,12 @@
-.card {
-    box-shadow: 3px 1px 2px 1px rgb(255, 119, 119);
-}
-
-.card-title {
-    margin-top: 10px;
-    margin-left: -5px;
+.post-container-fluid {
+    overflow-x: hidden;
+    padding: 0px;
 }
 
 .card-text {
     color: black;
     font-family: "Alegreya Sans SC";
     font-size: 18px;
-}
-
-.list-group {
-    margin-top: 10px;
 }
 
 .text {
@@ -42,14 +34,8 @@
 
 .btnad {
     border: none;
-    width: 82px;
     cursor: pointer;
-    font-family: "Alegreya Sans SC";
-    background-color: rgb(255, 255, 255);
     border: none;
-    box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
-    color: #d02020;
-    margin-bottom: 10px;
 }
 
 .btnad:hover {
@@ -60,7 +46,6 @@
     border: none;
     width: 82px;
     cursor: pointer;
-    font-family: "Alegreya Sans SC";
     background-color: rgb(255, 255, 255);
 }
 .btnotherad:hover {
@@ -68,25 +53,12 @@
 }
 
 .phn {
-    font-family: "Alegreya Sans SC";
-    font-size: 12px;
-    margin-left: 10px;
-    margin-top: -15px;
-}
-
-.adheading {
-    font-size: 28px;
-    font-family: "Alegreya Sans SC";
-    font-style: bold;
-    margin: auto;
-    margin-top: 10px;
-    text-align: center;
-    vertical-align: middle;
-    display: table-cell;
+    font-size: 18px;
 }
 
 .minimal-tabs {
     margin-top: 20px;
+    margin-left: 18px;
 }
 
 .nav-tabs {
@@ -96,7 +68,7 @@
 
 .nav-tabs > li > a:hover {
     border: none;
-    border-bottom: solid 5px gray;
+    border-bottom: solid 2px gray;
 }
 
 .tab-content {
@@ -107,7 +79,8 @@
     border-radius: 0;
     margin: 0;
     line-height: normal;
-    color: grey;
+    color: black;
+    font-weight: 500;
     font-size: 18px;
 }
 
@@ -153,4 +126,81 @@
     height: 900px;
     overflow-y: scroll;
     overflow-x: hidden;
+}
+
+.card-title {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+/* .card-title:hover {
+    overflow: visible;
+    -webkit-line-clamp: 2;
+} */
+
+.footer-basic {
+    padding: 40px 0;
+    background-color: #d02020;
+    color: white;
+    height: 300px;
+}
+
+.footer-basic ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.footer-basic li {
+    padding: 0 10px;
+}
+
+.footer-basic ul a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.footer-basic ul a:hover {
+    opacity: 1;
+}
+
+.footer-basic .social {
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.footer-basic .social > a {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin: 0 8px;
+    color: white;
+    opacity: 0.75;
+}
+
+.footer-basic .social > a:hover {
+    opacity: 0.9;
+}
+
+.footer-basic .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 0;
 }

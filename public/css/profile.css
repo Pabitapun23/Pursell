@@ -1,6 +1,6 @@
 .profile-container {
     margin-top: 3%;
-    margin-bottom: -10px;
+    margin-bottom: 0px;
     max-width: 100%;
     height: auto;
     border: solid 1px white;
@@ -11,7 +11,6 @@
 .profile-content {
     font-family: "Roboto";
     max-width: 100%;
-    height: auto;
     border: solid 1px white;
     border-radius: 1rem;
     box-shadow: 1rem;
@@ -38,7 +37,7 @@ h5 {
 .footer {
     background-color: antiquewhite;
     width: 100%;
-    height: 30vh;
+    height: 40vh;
 }
 
 .editbutton {
@@ -203,6 +202,7 @@ h5 {
 .footer-basic {
     padding: 40px 0;
     background-color: #d02020;
+    height: 35vh;
     color: white;
 }
 

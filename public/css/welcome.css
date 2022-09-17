@@ -127,7 +127,6 @@ ul {
 }
 
 .search_form {
-    box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
     width: 200px;
     border: none;
     /* border-top-left-radius: 29%;
@@ -136,23 +135,23 @@ ul {
 
 .form1 {
     border: none;
-    box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
+    box-shadow: 0px 1px 1px gray, 0px -1px 4px gray;
     width: 135px;
 }
 .form2 {
     border: none;
-    box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
+    box-shadow: 0px 1px 1px gray, 0px -1px 4px gray;
     width: 100px;
 }
 .form3 {
     border: none;
-    box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
+    box-shadow: 0px 1px 1px gray, 0px -1px 4px gray;
     width: 200px;
     height: 39px;
 }
 .form4 {
     border: none;
-    box-shadow: 0px 1px 1px #d02020, 0px -1px 4px #d02020;
+    box-shadow: 0px 1px 1px gray, 0px -1px 4px gray;
     width: 150px;
     height: 39px;
     color: gray;
@@ -190,7 +189,7 @@ ul {
 } */
 
 .locbutton {
-    box-shadow: 0.1px 0.1px 2px 1px #d02020;
+    box-shadow: 0.1px 0.1px 2px 1px gray;
     background-color: #f9f9f9;
     color: #f53535;
     border: none;
@@ -207,7 +206,7 @@ ul {
 }
 
 .searchbutton {
-    box-shadow: 0.1px 0.1px 2px 1px #d02020;
+    box-shadow: 0.1px 0.1px 2px 1px gray;
     background-color: #f9f9f9;
     border: none;
     height: 39px;
@@ -586,6 +585,7 @@ ul {
     padding: 40px 0;
     background-color: #d02020;
     color: white;
+    height: 300px;
 }
 
 .footer-basic ul {

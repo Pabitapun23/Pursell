@@ -73,7 +73,7 @@
             style=" background:#fbf9f9; border-bottom:1px solid #F53535;    box-shadow: 0 0 5px 1px #F53535; height: 55px; ">
             <li class="nav-item">
                 <a class="nav-link text-capitalize d-flex flex-column justify-content-center align-items-center"
-                    href="#">
+                    href="{{ route('welcome') }}">
                     <button class="home">
                         <i class="fas fa-home fa-fw fa-lg">
                         </i>
@@ -81,7 +81,48 @@
                     <span style="color:black" class="small">
                 </a>
             </li>
-            <li class="nav-item">
+
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link text-capitalize d-flex flex-column justify-content-center align-items-center"
+                        href="javascript:void(0);">
+                        <button class="message">
+                            <i class="fa fa-commenting" aria-hidden="true">
+                            </i>
+                        </button>
+                        <span style="color:black" class="small">
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active text-capitalize d-flex flex-column justify-content-center align-items-center"
+                        href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="noti">
+                            <i class="fas fa-bell fa-fw fa-lg">
+                                <span
+                                    class="badge badge-danger navbar-badge notification-count rounded-circle">{{ $notification_count }}</span>
+                            </i>
+                        </button>
+                        {{-- <span style="color:black" class="small">
+                        </span> --}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end position-absolute px-3 py-3" aria-labelledby="navbarDropdown"
+                        style="background-color: white; padding:5px;">
+                        <li class="dropdown-menu-element"><a class="dropdown-item py-2" href="{{ route('read') }}"
+                                style="background-color: white;">
+                                Mark all as read</a></li>
+
+                        @foreach ($detail as $comment)
+                            <li class="dropdown-menu-element"><a class="dropdown-item"
+                                    href="{{ route('notifyseen', $comment->id) }}"
+                                    style="background-color: white;">{{ $comment->name }}
+                                    commented on your post </a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endauth
+
+            {{-- <li class="nav-item">
                 <a class="nav-link text-capitalize d-flex flex-column justify-content-center align-items-center"
                     href="#">
                     <button class="message">
@@ -90,10 +131,11 @@
                     </button>
                     <span style="color:black" class="small">
                 </a>
-            </li>
+            </li> --}}
+
             <li class="nav-item">
                 <a class="nav-link text-capitalize d-flex flex-column justify-content-center align-items-center"
-                    href="#">
+                    href="{{ route('postform') }}">
                     <button class="addpost">
                         <i class="fa fa-plus-circle" aria-hidden="true">
                         </i>
@@ -102,27 +144,33 @@
                     </span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active text-capitalize d-flex flex-column justify-content-center align-items-center"
-                    href="#">
-                    <button class="noti">
-                        <i class="fas fa-bell fa-fw fa-lg"></i>
-                    </button>
-                    <span style="color:black" class="small">
-                    </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active text-capitalize d-flex flex-column justify-content-center align-items-center"
-                    href="#">
-                    <button class="profile">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                    </button>
-                    <span style="color:black" class="small">
-                    </span>
-                </a>
-            </li>
 
+            <!-- Authentication Links -->
+            @guest
+                @if (Route::has('login'))
+                    <li class="nav-item">
+                        <a class="nav-link pt-0 text-capitalize d-flex flex-column justify-content-center align-items-center"
+                            href="{{ route('login') }}">
+                            <button class="profile">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </button>
+                            <span style="color:black" class="small">
+                            </span>
+                        </a>
+                    </li>
+                @endif
+            @else
+                <li class="nav-item">
+                    <a class="nav-link pt-0 text-capitalize d-flex flex-column justify-content-center align-items-center"
+                        href="{{ route('profile', Auth::user()->id) }}">
+                        <button class="profile">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </button>
+                        <span style="color:black" class="small">
+                        </span>
+                    </a>
+                </li>
+            @endguest
         </ul>
 
         <!-- navbar -->
