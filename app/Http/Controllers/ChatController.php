@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
+    public function index()
+    {
+        return view('chatdisplay');
+    }
     public function chat(Request $request)
     {
         //dd($request->all());

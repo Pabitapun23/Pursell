@@ -1,0 +1,13 @@
+<tr>
+    <td class="header">
+        <a href="{{ $url }}" style="display: inline-block;">
+            @if (trim($slot) === 'Laravel')
+            <b>
+                <h1>PURSELL</h1>
+            </b>
+            @else
+            {{ $slot }}
+            @endif
+        </a>
+    </td>
+</tr>

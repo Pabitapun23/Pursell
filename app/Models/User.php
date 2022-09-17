@@ -28,6 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'phoneno',
         'profileimg',
         'role',
+        
     ];
 
     /**
@@ -77,5 +78,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function chats()
     {
         return $this->hasMany(Chat::class);
+    }
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
     }
 }

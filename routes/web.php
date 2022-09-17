@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RateAndReviewController;
 use App\Http\Controllers\ReportUserController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -65,6 +66,9 @@ Route::get('/sender', function () {
 Route::post('/sender', [TestController::class, 'test'])->name('test');
 
 Route::post('/chat', [ChatController::class, 'chat'])->name('chat');
+Route::get('getchat', [ChatController::class, 'index'])->name('getchat');
+
+Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
 
 
 Route::get('/', [WelcomeController::class, 'displaypost'])->name('welcome');
@@ -101,6 +105,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin', 'auth', 'PreventB
 });
 
 Route::group(['prefix' => 'user', 'middleware', 'verified' => ['isUser', 'auth', 'PreventBackHistory']], function () {
+    // Route::get('profile/{id}', [ProfileController::class, 'displayprofile'])->name('profile')->middleware('verified');
     Route::get('dashboard', [UserController::class, 'index'])->name('user.dashboard')->middleware('verified');
     Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
     Route::get('settings', [UserController::class, 'setting'])->name('user.settings');
