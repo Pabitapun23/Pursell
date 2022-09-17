@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+   
 }
 
 .fw-normal {
@@ -19,12 +20,12 @@
 }
 
 .owl-carousel .owl-prev {
-    left: -12px;
+    left: -5px;
     position: absolute;
     top: 35%;
 }
 .owl-carousel .owl-next {
-    right: -12px;
+    right: -5px;
     position: absolute;
     top: 35%;
 }
