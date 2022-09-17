@@ -33,4 +33,6 @@ class WishlistController extends Controller
         ];
         return $data;
     }
+
+   
 }

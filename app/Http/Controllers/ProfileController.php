@@ -10,14 +10,20 @@ use App\Models\Post;
 use App\Models\RateAndReview;
 use App\Models\ReportUser;
 use App\Models\User;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
     public function displayprofile($id)
     {
+        $userid = Auth::user()->id;
+
+        $wishdatas = Wishlist::with('post', 'user')->where('user_id', $userid)->get();
+
         $users = User::find($id);
         $posts = $users->post()->get();
 
@@ -47,7 +53,7 @@ class ProfileController extends Controller
         //dd($report);
         // dd($users);
 
-        return view('profile', compact("users", "posts", 'id', "rating", "report", "rating_value", 'myRating', 'myReport'));
+        return view('profile', compact("users", "posts", 'id', "rating", "report", "rating_value", 'myRating', 'myReport', 'wishdatas'));
     }
 
     public function deletepost($id)
