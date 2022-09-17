@@ -6,6 +6,7 @@
     border: solid 1px white;
     border-radius: 1rem;
     box-shadow: 1rem;
+    overflow: hidden;
 }
 
 .profile-content {
