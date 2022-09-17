@@ -51,7 +51,7 @@
                     <!--thulo ko lagi xuttai search bar which will be hidden in small screen-->
                     <div class="row1 mt-0" style="text-align: center;">
                         <h2 style="color:#D02020;">PURchase and SELL - Anything , Anytime , Anywhere</h2>
-                        {{-- <h4>Explore our huge range of quality second-hand products.</h4> --}}
+
                         <div class="search1">
                             <form action="/searchData">
                                 <div class="input-group rounded">
@@ -66,10 +66,12 @@
 
                                     <div>
                                         <select class="form4" name="address" id="address-web">
-                                            <option value="">Select Location</option>
+                                            <option value=""> &nbsp; Select Location</option>
                                             @if ($addresses != null && count($addresses) > 0)
                                                 @foreach ($addresses as $address)
-                                                    <option value="{{ $address->city }}">{{ $address->city }}</option>
+                                                    <option value="{{ $address->city }}">
+                                                        &nbsp; {{ $address->city }}
+                                                    </option>
                                                 @endforeach
                                             @endif
                                         </select>
@@ -83,39 +85,41 @@
                         </div>
                     </div>
                 </div>
+
                 <!--mobile ko lagi xuttai search bar which will be hidden in big screen-->
                 <div class="d-block d-md-none">
                     <div class="row2" style="text-align: center;">
-                        <h1 style="font-size:20px;color:#D02020;">PURchase and SELL - Anything , Anytime , Anywhere</h1>
+                        <h1 class="px-2" style="font-size:20px;color:#D02020;">PURchase and SELL - Anything , Anytime ,
+                            Anywhere</h1>
                         <div class="w-100"></div>
-                        <div class="search1">
+                        <div class="search1 justify-content-center">
                             <form action="/searchData">
                                 <div class="input-group rounded">
-                                    <div class="searchbutton"> <button class="searchbutton"></button></div>
-                                    <div class="search_form" style="position: relative;">
-                                        <input type="text" name="search" id="search-mobile" class="form3"
-                                            placeholder=" Search All Items " aria-label="Search"
+                                    <div class="searchbutton_mobile" style="width: 15px;"><button
+                                            class="searchbutton"></button>
+                                    </div>
+                                    <div class="search_form_mobile" style="position: relative;">
+                                        <input type="text" name="search" id="search-mobile" class="form5"
+                                            placeholder=" Search All Items" aria-label="Search"
                                             aria-describedby="search-addon" />
-                                        {{-- <input type="search" class="form4" placeholder="   All Location" aria-label="Search" aria-describedby="search-addon" /> --}}
-                                        <div id="post_list_mobile" style="position: absolute;">
+                                        <div id="post_list_mobile"
+                                            style="position: absolute; width:140px; margin-left:10px">
                                         </div>
                                     </div>
                                     <div>
-                                        <select class="form4" name="address" id="address-mobile">
+                                        <select class="form6 ps-2" name="address" id="address-mobile">
                                             <option value="">Select Location</option>
                                             @if (count($addresses) > 0)
                                                 @foreach ($addresses as $address)
-                                                    <option value="{{ $address->city }}">{{ $address->city }}</option>
+                                                    <option value="{{ $address->city }}" style="width:150px;">
+                                                        {{ $address->city }}</option>
                                                 @endforeach
                                             @endif
                                         </select>
                                     </div>
-                                    {{-- <input type="search" class="form1" placeholder="   Search Items" aria-label="Search"
-                                aria-describedby="search-addon" /> --}}
-                                    {{-- <input type="search" class="form2" placeholder=" All Location" aria-label="Search"
-                                aria-describedby="search-addon" /> --}}
-                                    <div class="location"><button class="locbutton" type="submit"><i
-                                                class="fa fa-map-marker" aria-hidden="true"></i></button></div>
+                                    <div class="location_mobile"><button class="locbutton_mobile" type="submit"><i
+                                                class="fa fa-map-marker" aria-hidden="true"></i></button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -125,7 +129,7 @@
 
             <div class="middle-container">
                 <h2 class="text-center py-5">Explore our huge range of quality second-hand products.</h2>
-                <div class="row my-3 mx-5">
+                <div class="row my-3">
                     <div class="col-lg-3 col-12">
                         <div class="content shadow ps-2 mb-4 rounded justify-content-center">
                             <!--yo category chai small ma dekhinna lukxa md block le-->
@@ -160,62 +164,35 @@
                                         </li>
                                     @endforeach
                                 </ul>
-
-                                {{-- <button type="button" class="loadbtn">Load More</button> --}}
-                                {{-- </div>
-                                </div> --}}
                             </div>
+
+
                             <!-- Mbl ko lai -->
                             <div class="d-block d-md-none">
-                                <ul class="list-group list-group-flush">
-                                    <li class="h1">CATEGORIES</li>
-                                    <li class="list">
-
-                                        <div class="dropdown">
-                                            <button class="dropbtn">Mobiles</button>
-                                            <div class="dropdown-content" x-placement="right-start"
-                                                style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -50px; will-change: transform;">
-                                                <button class="dropbtn"><a href="#">Iphone</a></button>
-                                                <button class="dropbtn"><a href="#">Samsung</a></button>
+                                <ul class="list-group list-group-flush pb-3">
+                                    <h4 class="px-3" style="color: #D02020; padding-top:30px;">All Categories</h4>
+                                    <hr style="width: 95%; margin-top: 5px;">
+                                    @foreach ($categories as $cat)
+                                        <li class="list py-2 px-3">
+                                            <div class="dropdown">
+                                                <button class="dropbtn">{{ $cat->name }}</button>
+                                                <div class="drop">
+                                                    <div class="dropdown-content" x-placement="right-start"
+                                                        style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -50px; will-change: transform;">
+                                                        @foreach ($subcategories as $sub)
+                                                            @if ($sub->parent_id == $cat->id)
+                                                                <button class="dropbtn"><a
+                                                                        href="{{ route('displaycat', $sub->name) }}"
+                                                                        style="width: 300px;" class="ps-3">
+                                                                        {{ $sub->name }}
+                                                                    </a></button>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="list">
-                                        <div class="dropdown">
-                                            <button class="dropbtn">Automobiles</button>
-                                            <div class="dropdown-content" x-placement="right-start"
-                                                style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: -20px; will-change: transform;">
-                                                <a href="#">Cars</a>
-                                                <a href="#">Motorcycles</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list">
-                                        <div class="dropdown">
-                                            <button class="dropbtn">Musical Instruments</button>
-                                            <div class="dropdown-content" x-placement="right-start"
-                                                style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 41px; will-change: transform;">
-
-                                                <a href="#">Guitar</a>
-                                                <a href="#">Microphone</a>
-                                                <a href="#">Drum</a>
-                                                <a href="#">Speaker</a>
-                                            </div>
-                                        </div>
-
-                                    </li>
-                                    <li class="list">
-                                        <div class="dropdown">
-                                            <button class="dropbtn">Home Appliances</button>
-                                            <div class="dropdown-content" x-placement="right-start"
-                                                style="position: absolute; transform: translate3d(111px, 0px, 0px); top: 0px; left: 20px; will-change: transform;">
-                                                <a href="#">Furniture</a>
-                                                <a href="#">Kitchen Sets</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    {{-- <li class="load"><button class="loadbtn" type="button">Load More</button></li> --}}
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
