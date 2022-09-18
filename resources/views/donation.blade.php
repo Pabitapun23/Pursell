@@ -71,22 +71,21 @@
                     <div class="card mx-2 mb-4" style="height: 100%; ">
                         <a href="{{ asset($data->image) }}" style="color:#D02020; text-decoration:none;">
                             <img class="card-img-top " src="{{ asset($data->image) }}" alt="" style="height: 20vh">
-                            <div class="card-body px-1">
-                                <h4>{{ $data->name }}</h4>
-                            </div>
-                            <div class="card-footer" style="background-color: white;">
-                                <ul class="list-group mx-2 my-3">
-                                    <li class="list-group-item">Telephone: &nbsp; <span
+                            <div class="card-body px-1 pb-0">
+                                <h4 class="px-2">{{ $data->name }}</h4>
+                                <ul class="list-group mx-2 my-1">
+                                    <li class="list-group-item pt-2">Telephone: &nbsp; <span
                                             style="color: grey">{{ $data->telephone }}
                                         </span></li>
-                                    <li class="list-group-item">Email: &nbsp; <span style="color: grey">{{ $data->email }}
+                                    <li class="list-group-item pt-1">Email: &nbsp; <span
+                                            style="color: grey">{{ $data->email }}
                                         </span></li>
-                                    <li class="list-group-item">Website: &nbsp; <span
+                                    <li class="list-group-item pt-1">Website: &nbsp; <span
                                             style="color: grey">{{ $data->website }}</span></li>
                                 </ul>
                             </div>
-                            <a href="{{ url('donation-view/' . $data->id) }}" class="my-2">
-                                <button type="submit" class="btn float-end px-4 py-2"
+                            <a href="{{ url('donation-view/' . $data->id) }}" class="my-2 me-2">
+                                <button type="submit" class="btn float-end px-3 py-2"
                                     style="background-color: #fd7e14; color:white;">View</button>
                             </a>
                         </a>
@@ -134,10 +133,10 @@
                 navText: ["<div class='nav-button owl-prev'>‹</div>", "<div class='nav-button owl-next'>›</div>"],
                 responsive: {
                     0: {
-                        items: 3
+                        items: 1
                     },
                     600: {
-                        items: 3
+                        items: 2
                     },
                     1000: {
                         items: 5

@@ -119,7 +119,8 @@
                                     </svg> &nbsp; <span style="color: grey">{{ $organizations->website }}</span></li>
                             </ul>
                         </div>
-                        <a class="d-flex justify-content-center text-decoration-none" href="{{ url('/donation-page') }}">
+                        <a class="d-flex justify-content-center text-decoration-none mt-1"
+                            href="{{ url('/donation-page') }}">
                             <button type="submit" class="btn mb-3 px-4"
                                 style="background-color: #fd7e14; color:white;">Done</button>
                         </a>
