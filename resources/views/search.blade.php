@@ -22,218 +22,392 @@
 
         <!-- Search Result div -->
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-12 mx-2 shadow rounded">
-                    <h4 class="px-4 py-2" style="font-family: Arial,sans-serif;">Search Results for:
-                        {{ app('request')->get('search') }}
-                    </h4>
-                    <hr>
-                    @if ($posts != null && count($posts) > 0)
-                        @foreach ($posts as $data)
-                            <div class="col-lg-12 col-sm-12 mx-1 me-2">
-                                <a href="{{ url('singlepost/' . $data->id) }}" style="text-decoration: none; color:black;">
-                                    <div class="card" id="post">
-                                        <div class="card-horizontal">
-                                            <div class="row">
-                                                <div class="col-xl-3 ">
-                                                    @foreach ($data->images->take(1) as $img)
-                                                        <div class="img-square-wrapper">
-                                                            <img class="responsive" src="{{ asset($img->image) }}"
-                                                                name="img" alt="Card image cap">
+        <div class="container-fluid mb-5 mt-3" style="overflow: hidden;">
+
+            {{-- Desktop View --}}
+            <div class="d-none d-md-block">
+                <div class="row">
+                    <div class="col-lg-6 col-12 mx-2 shadow rounded">
+                        <h4 class="px-4 pt-4" style="font-family: Arial,sans-serif;">Search Results for:
+                            <span style="color: gray;"> {{ app('request')->get('search') }} </span>
+                        </h4>
+                        <hr>
+                        @if ($posts != null && count($posts) > 0)
+                            @foreach ($posts as $data)
+                                <div class="col-lg-12 col-sm-12 mx-1 me-2">
+                                    <a href="{{ url('singlepost/' . $data->id) }}"
+                                        style="text-decoration: none; color:black;">
+                                        <div class="card mx-0" id="post">
+                                            <div class="card-horizontal">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-12">
+                                                        @foreach ($data->images->take(1) as $img)
+                                                            <div class="img-square-wrapper">
+                                                                <img class="responsive" src="{{ asset($img->image) }}"
+                                                                    name="img" alt="Card image cap">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+                                                    <div class="col-lg-9 col-12">
+                                                        <div class="card-body">
+                                                            <h4 class="card-title">{{ $data->title }}</h4>
+                                                            <p class="card-text">{{ $data->description }}
+                                                            </p>
+                                                            <ul class="list-group list-group-horizontal ">
+                                                                <li class="list-group-item border-0"
+                                                                    style="font-weight: bolder;"><i
+                                                                        class="fa-solid fa-money-bill-wave" name="price"
+                                                                        style="margin-right: 4px;"></i>Price
+                                                                    : {{ $data->price }}</li>
+
+                                                                <li class="list-group-item border-0" name="condition"
+                                                                    style="font-weight: bolder;">
+                                                                    Condition:
+                                                                    {{ $data->condition }}
+                                                                </li>
+                                                                <li class="list-group-item border-0" name="negotiable"
+                                                                    style="font-weight: bolder;">
+                                                                    Negotiable:
+                                                                    @if ($data->negotiable == 0)
+                                                                        <p>No</p>
+                                                                    @else
+                                                                        <p>Yes</p>
+                                                                    @endif
+                                                                </li>
+                                                            </ul>
+                                                            <hr>
+                                                            <ul class="list-group list-group-horizontal ">
+                                                                <li class="list-group-item border-0" name="username"
+                                                                    style="color: grey;"><i class="fa-regular fa-user"
+                                                                        style="margin-right: 8px;"></i>{{ $data->user->name }}
+                                                                </li>
+                                                                <li class="list-group-item border-0" name="address"
+                                                                    style="color: grey;"><i class="fa-solid fa-location-dot"
+                                                                        style="margin-right: 8px;"></i>{{ $data->address }}
+                                                                </li>
+                                                                <li class="list-group-item border-0" style="color: grey;">
+                                                                    @if (auth()->user()->id != $data->user->id)
+                                                                        <button id="wishlistBtn"
+                                                                            class="pt-1 pb-2 px-1 mt-0 float-end"
+                                                                            style="border:none; background-color:white;">
+                                                                            <i class="fa-solid fa-bookmark fa-lg"
+                                                                                id='heart'
+                                                                                style="color:gray; color:{{ Auth::user()->wishlists()->where('post_id', $data->id)->count() > 0? '#d02020': '' }}">
+                                                                            </i>
+                                                                        </button>
+                                                                        <input type="hidden" name="id" id="postid"
+                                                                            value="{{ $data->id }}">
+                                                                    @endif
+                                                            </ul>
                                                         </div>
-                                                    @endforeach
-                                                </div>
-
-                                                <div class="col-xl-9">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title">{{ $data->title }}</h4>
-                                                        <p class="card-text">{{ $data->description }}
-                                                        </p>
-                                                        <ul class="list-group list-group-horizontal ">
-                                                            <li class="list-group-item border-0"
-                                                                style="font-weight: bolder;"><i
-                                                                    class="fa-solid fa-money-bill-wave" name="price"
-                                                                    style="margin-right: 4px;"></i>Price
-                                                                : {{ $data->price }}</li>
-
-                                                            <li class="list-group-item border-0" name="condition"
-                                                                style="font-weight: bolder;">
-                                                                Condition:
-                                                                {{ $data->condition }}
-                                                            </li>
-                                                            <li class="list-group-item border-0" name="negotiable"
-                                                                style="font-weight: bolder;">
-                                                                Negotiable:
-                                                                @if ($data->negotiable == 0)
-                                                                    <p>No</p>
-                                                                @else
-                                                                    <p>Yes</p>
-                                                                @endif
-                                                            </li>
-                                                        </ul>
-                                                        <hr>
-                                                        <ul class="list-group list-group-horizontal ">
-                                                            <li class="list-group-item border-0" name="username"
-                                                                style="color: grey;"><i class="fa-regular fa-user"
-                                                                    style="margin-right: 8px;"></i>{{ $data->user->name }}
-                                                            </li>
-                                                            <li class="list-group-item border-0" name="address"
-                                                                style="color: grey;"><i class="fa-solid fa-location-dot"
-                                                                    style="margin-right: 8px;"></i>{{ $data->address }}</li>
-                                                            <li class="list-group-item border-0" style="color: grey;">
-                                                                @if (auth()->user()->id != $data->user->id)
-                                                                    <button id="wishlistBtn"
-                                                                        class="pt-1 pb-2 px-1 mt-0 float-end"
-                                                                        style="border:none; background-color:white;">
-                                                                        <i class="fa-solid fa-bookmark fa-lg" id='heart'
-                                                                            style="color:gray; color:{{ Auth::user()->wishlists()->where('post_id', $data->id)->count() > 0? '#d02020': '' }}">
-                                                                        </i>
-                                                                    </button>
-                                                                    <input type="hidden" name="id" id="postid"
-                                                                        value="{{ $data->id }}">
-                                                                @endif
-                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                            </div></a>
-                        @endforeach
-                    @else
-                        <div class="col-lg-6 col-12 mx-2">
-                            <div class="card">
-                                <div class="card-horizontal">
-                                    <div class="row">
-                                        <p class="px-4">Search result not found!</p>
+                                </div></a>
+                            @endforeach
+                        @else
+                            <div class="col-lg-6 col-12 mx-2">
+                                <div class="card">
+                                    <div class="card-horizontal">
+                                        <div class="row">
+                                            <p class="px-4">Search result not found!</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                </div>
+                        @endif
+                    </div>
 
-                {{-- Filter section div --}}
-                <div class="col-lg-5 col-12 mx-3">
-                    <form action="{{ route('filter') }}">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <input name="search" hidden value={{ app('request')->get('search') }} />
-                            <div id="formdiv">
-                                <div class="filter">
-                                    <p>Filter the Search</p>
-                                </div>
-                                <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
-                                    Sort Ads By</p>
-                                <select class="form-select" name="sort"
-                                    style="height: 28px;padding-bottom:
+                    {{-- Filter section div --}}
+                    <div class="col-lg-5 col-12 mx-3">
+                        <form action="{{ route('filter') }}">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <input name="search" hidden value={{ app('request')->get('search') }} />
+                                <div id="formdiv">
+                                    <h3 class="filter py-2">Filter the Search</h3>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
+                                        Sort Ads By</p>
+                                    <select class="form-select" name="sort"
+                                        style="height: 28px;padding-bottom:
                                         3px;margin-bottom: 10px;font-size:
                                         12px;width: 90%; margin-left:25px;
                                         color: grey;">
 
-                                    <option value="">Sort Ads</option>
-                                    {{-- <a href="{{ URL::current() }}" class="sort-font">
-                                <option>All</option>
-                                </a>
-                                <a href="{{ URL::current() . '?sort=price_asc' }}" class="sort-font">
-                                    <option>Low to High (Price)</option>
-                                </a>
-                                <a href="{{ URL::current() . '?sort=price_desc' }}" class="sort-font">
-                                    <option>High to Low (Price)</option>
-                                </a>
-                                <a href="{{ URL::current() . '?sort=newest' }}" class="sort-font">
-                                    <option>Recent
-                                    </option>
-                                </a>
-                                <a href="{{ URL::current() . '?sort=oldest' }}" class="sort-font">
-                                    <option>Older</option>
-                                </a> --}}
+                                        <option value="">Sort Ads</option>
+                                        <option value="">All</option>
+                                        <option value="price_asc">Low to High (Price)</option>
+                                        <option value="price_desc">High to Low (Price)</option>
+                                        <option value="recent">Recent</option>
+                                        <option value="older">Older</option>
 
-                                    <option value="">All</option>
-                                    <option value="price_asc">Low to High (Price)</option>
-                                    <option value="price_desc">High to Low (Price)</option>
-                                    <option value="recent">Recent</option>
-                                    <option value="older">Older</option>
+                                    </select>
 
-                                </select>
-
-                                <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">Condition</p>
-                                <select class="form-select" name="condition"
-                                    style="height: 28px;padding-bottom:3px;margin-bottom: 10px;font-size:12px;width: 90%; margin-left:25px;color: grey;">
-                                    <option value="">Select Condition</option>
-                                    @if ($conditions != null && count($conditions) > 0)
-                                        @foreach ($conditions as $cond)
-                                            <option value="{{ $cond->condition }}">{{ $cond->condition }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                                <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">Location</p>
-                                <select class="form-select" name="address"
-                                    style="height: 28px;padding-bottom:
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">Condition</p>
+                                    <select class="form-select" name="condition"
+                                        style="height: 28px;padding-bottom:3px;margin-bottom: 10px;font-size:12px;width: 90%; margin-left:25px;color: grey;">
+                                        <option value="">Select Condition</option>
+                                        @if ($conditions != null && count($conditions) > 0)
+                                            @foreach ($conditions as $cond)
+                                                <option value="{{ $cond->condition }}">{{ $cond->condition }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">Location</p>
+                                    <select class="form-select" name="address"
+                                        style="height: 28px;padding-bottom:
                                         3px;margin-bottom: 10px;font-size:
                                         12px;width: 90%; margin-left:25px;
                                         color: grey;"
-                                    id="address">
-                                    <option value="">Select Location</option>
+                                        id="address">
+                                        <option value="">Select Location</option>
 
-                                    @if ($addresses != null && count($addresses) > 0)
-                                        @foreach ($addresses as $address)
-                                            <option value="{{ $address->city }}">{{ $address->city }}</option>
-                                        @endforeach
-                                    @endif
-                                </select>
-                                <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
-                                    Price Range</p>
-                                <div class="row" name="price">
-                                    <div class="col">
-                                        <input type="number" min="1" name="min_price"
-                                            message="No
+                                        @if ($addresses != null && count($addresses) > 0)
+                                            @foreach ($addresses as $address)
+                                                <option value="{{ $address->city }}">{{ $address->city }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
+                                        Price Range</p>
+                                    <div class="row" name="price">
+                                        <div class="col">
+                                            <input type="number" min="1" name="min_price"
+                                                message="No
                                                 products for free!"
-                                            class="form-control" name="minprice"
-                                            style="height:
+                                                class="form-control" name="minprice"
+                                                style="height:
                                                 28px;padding-bottom:
                                                 3px;margin-bottom:
                                                 10px;font-size: 12px;width: 90%;
                                                 margin-left:25px; color: grey;"
-                                            placeholder="Min" aria-label="First name">
-                                    </div>
-                                    <div class="col">
-                                        <input type="Number" min="1" name="max_price"
-                                            message="No
+                                                placeholder="Min" aria-label="First name">
+                                        </div>
+                                        <div class="col">
+                                            <input type="Number" min="1" name="max_price"
+                                                message="No
                                                 products for free!"
-                                            class="form-control" name="maxprice"
-                                            style="height:
+                                                class="form-control" name="maxprice"
+                                                style="height:
                                                 28px;padding-bottom:
                                                 3px;margin-bottom:
                                                 10px;font-size: 12px;width: 90%;
                                                 color: grey;"
-                                            placeholder="Max" aria-label="Last name">
+                                                placeholder="Max" aria-label="Last name">
+                                        </div>
                                     </div>
-                                </div>
-                                <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
-                                    Negotiable</p>
-                                <select class="form-select" name="negotiable"
-                                    style="height: 28px;padding-bottom:
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
+                                        Negotiable</p>
+                                    <select class="form-select" name="negotiable"
+                                        style="height: 28px;padding-bottom:
                                         3px;margin-bottom: 10px;font-size:
                                         12px;width: 90%; margin-left:25px;
                                         color: grey;">
-                                    <option value="">Negotiable</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                        <option value="">Negotiable</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
 
-                                </select>
+                                    </select>
 
-                                <div class="row" style="padding-top:24px;">
-                                    <div class="clear">
-                                        <button type="submit" class="bottombutton" style="font-family:Algeria;"
-                                            id="filterbtn">Filter
-                                        </button>
+                                    <div class="row" style="padding-top:24px;">
+                                        <div class="clear">
+                                            <button type="submit" class="btn px-3 py-1"
+                                                style="background-color: #d02020; color:white;" id="filterbtn">Filter
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Mobile View --}}
+            <div class="d-md-none d-block">
+                <div class="row mt-5">
+                    <div class="col-lg-8 col-12 shadow rounded">
+                        <h4 class="px-4 pt-4" style="font-family: Arial,sans-serif;">Search Results for:
+                            <span style="color: gray;"> {{ app('request')->get('search') }} </span>
+                        </h4>
+                        <hr>
+                        @if ($posts != null && count($posts) > 0)
+                            @foreach ($posts as $data)
+                                <div class="col-lg-12 col-sm-12">
+                                    <a href="{{ url('singlepost/' . $data->id) }}"
+                                        style="text-decoration: none; color:black;">
+                                        <div class="card mx-0" id="post">
+                                            @foreach ($data->images->take(1) as $img)
+                                                <div class="img-square-wrapper justify-content-center">
+                                                    <img class="responsive" src="{{ asset($img->image) }}"
+                                                        name="img" alt="Card image cap">
+                                                </div>
+                                            @endforeach
+
+                                            <div class="card-body ">
+                                                <h4 class="card-title">{{ $data->title }}</h4>
+                                                <p class="card-text">{{ $data->description }}
+                                                </p>
+                                                <ul class="list-group list-group-horizontal ">
+                                                    <li class="list-group-item border-0" style="font-weight: bolder;"><i
+                                                            class="fa-solid fa-money-bill-wave" name="price"
+                                                            style="margin-right: 4px;"></i>Price
+                                                        : {{ $data->price }}</li>
+
+                                                    <li class="list-group-item border-0" name="condition"
+                                                        style="font-weight: bolder;">
+                                                        Condition:
+                                                        {{ $data->condition }}
+                                                    </li>
+                                                    <li class="list-group-item border-0" name="negotiable"
+                                                        style="font-weight: bolder;">
+                                                        Negotiable:
+                                                        @if ($data->negotiable == 0)
+                                                            <p>No</p>
+                                                        @else
+                                                            <p>Yes</p>
+                                                        @endif
+                                                    </li>
+                                                </ul>
+                                                <hr>
+                                                <ul class="list-group list-group-horizontal ">
+                                                    <li class="list-group-item border-0" name="username"
+                                                        style="color: grey;"><i class="fa-regular fa-user"
+                                                            style="margin-right: 8px;"></i>{{ $data->user->name }}
+                                                    </li>
+                                                    <li class="list-group-item border-0" name="address"
+                                                        style="color: grey;"><i class="fa-solid fa-location-dot"
+                                                            style="margin-right: 8px;"></i>{{ $data->address }}
+                                                    </li>
+                                                    <li class="list-group-item border-0" style="color: grey;">
+                                                        @if (auth()->user()->id != $data->user->id)
+                                                            <button id="wishlistBtn" class="pt-1 pb-2 px-1 mt-0 float-end"
+                                                                style="border:none; background-color:white;">
+                                                                <i class="fa-solid fa-bookmark fa-lg" id='heart'
+                                                                    style="color:gray; color:{{ Auth::user()->wishlists()->where('post_id', $data->id)->count() > 0? '#d02020': '' }}">
+                                                                </i>
+                                                            </button>
+                                                            <input type="hidden" name="id" id="postid"
+                                                                value="{{ $data->id }}">
+                                                        @endif
+                                                </ul>
+                                            </div>
+                                        </div>
+                                </div></a>
+                            @endforeach
+                        @else
+                            <div class="col-lg-6 col-12 mx-2">
+                                <div class="card">
+                                    <p class="px-4">Search result not found!</p>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- Filter section div --}}
+                    <div class="col-lg-5 col-12 px-0">
+                        <form action="{{ route('filter') }}">
+                            @csrf
+                            <div class="form-group mb-3">
+                                <input name="search" hidden value={{ app('request')->get('search') }} />
+                                <div id="formdiv">
+                                    <h3 class="filter py-2">Filter the Search</h3>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
+                                        Sort Ads By</p>
+                                    <select class="form-select" name="sort"
+                                        style="height: 28px;padding-bottom:
+                                        3px;margin-bottom: 10px;font-size:
+                                        12px;width: 90%; margin-left:25px;
+                                        color: grey;">
+
+                                        <option value="">Sort Ads</option>
+                                        <option value="">All</option>
+                                        <option value="price_asc">Low to High (Price)</option>
+                                        <option value="price_desc">High to Low (Price)</option>
+                                        <option value="recent">Recent</option>
+                                        <option value="older">Older</option>
+
+                                    </select>
+
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">Condition</p>
+                                    <select class="form-select" name="condition"
+                                        style="height: 28px;padding-bottom:3px;margin-bottom: 10px;font-size:12px;width: 90%; margin-left:25px;color: grey;">
+                                        <option value="">Select Condition</option>
+                                        @if ($conditions != null && count($conditions) > 0)
+                                            @foreach ($conditions as $cond)
+                                                <option value="{{ $cond->condition }}">{{ $cond->condition }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">Location</p>
+                                    <select class="form-select" name="address"
+                                        style="height: 28px;padding-bottom:
+                                        3px;margin-bottom: 10px;font-size:
+                                        12px;width: 90%; margin-left:25px;
+                                        color: grey;"
+                                        id="address">
+                                        <option value="">Select Location</option>
+
+                                        @if ($addresses != null && count($addresses) > 0)
+                                            @foreach ($addresses as $address)
+                                                <option value="{{ $address->city }}">{{ $address->city }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
+                                        Price Range</p>
+                                    <div class="row" name="price">
+                                        <div class="col">
+                                            <input type="number" min="1" name="min_price"
+                                                message="No
+                                                products for free!"
+                                                class="form-control" name="minprice"
+                                                style="height:
+                                                28px;padding-bottom:
+                                                3px;margin-bottom:
+                                                10px;font-size: 12px;width: 90%;
+                                                margin-left:25px; color: grey;"
+                                                placeholder="Min" aria-label="First name">
+                                        </div>
+                                        <div class="col">
+                                            <input type="Number" min="1" name="max_price"
+                                                message="No
+                                                products for free!"
+                                                class="form-control" name="maxprice"
+                                                style="height:
+                                                28px;padding-bottom:
+                                                3px;margin-bottom:
+                                                10px;font-size: 12px;width: 90%;
+                                                color: grey;"
+                                                placeholder="Max" aria-label="Last name">
+                                        </div>
+                                    </div>
+                                    <p style="margin-left: 25px;margin-bottom:5px;font-family: Algeria; ">
+                                        Negotiable</p>
+                                    <select class="form-select" name="negotiable"
+                                        style="height: 28px;padding-bottom:
+                                        3px;margin-bottom: 10px;font-size:
+                                        12px;width: 90%; margin-left:25px;
+                                        color: grey;">
+                                        <option value="">Negotiable</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+
+                                    </select>
+
+                                    <div class="row" style="padding-top:24px;">
+                                        <div class="clear">
+                                            <button type="submit" class="btn px-3 py-1"
+                                                style="background-color: #d02020; color:white;" id="filterbtn">Filter
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

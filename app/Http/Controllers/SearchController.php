@@ -94,11 +94,11 @@ class SearchController extends Controller
                     $query->where('price', '<=', $request->max_price);
                 }
             })
-            ->when($request->sort == 'price_desc', function ($query) {
-                $query->orderBy('price', 'DESC');
-            })
             ->when($request->sort == 'price_asc', function ($query) {
                 $query->orderBy('price', 'ASC');
+            })
+            ->when($request->sort == 'price_desc', function ($query) {
+                $query->orderBy('price', 'DESC');
             })
             ->when($request->sort == 'recent', function ($query) {
                 $query->orderBy('created_at', 'DESC');
