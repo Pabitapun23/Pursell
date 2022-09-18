@@ -128,24 +128,20 @@
             </div>
 
             <!-- footer -->
-            {{-- <div class="footer-basic">
-                <footer>
+            <footer>
+                <div class="footer-basic">
                     <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
                                 class="icon ion-social-snapchat"></i></a><a href="#"><i
                                 class="icon ion-social-twitter"></i></a><a href="#"><i
                                 class="icon ion-social-facebook"></i></a></div>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#">Home</a></li>
-                        <li class="list-inline-item"><a href="#">Services</a></li>
-                        <li class="list-inline-item"><a href="#">About</a></li>
+                        <li class="list-inline-item"><a href="{{ route('welcome') }}">Home</a></li>
+                        <li class="list-inline-item"><a href="{{ route('aboutus') }}">About</a></li>
                         <li class="list-inline-item"><a href="#">Contact</a></li>
-                        <li class="list-inline-item"><a href="#">Something</a></li>
-                        <li class="list-inline-item"><a href="#">Bla Bla</a></li>
                     </ul>
                     <p class="copyright">PURSELL © 2021</p>
-
-                </footer>
-            </div> --}}
+                </div>
+            </footer>
         </div>
 
 

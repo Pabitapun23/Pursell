@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\FormSubmitted;
+use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatController;
@@ -120,6 +121,8 @@ Route::get('displaycat/{catname}', [CategoryController::class, 'index'])->name('
 
 Route::get('/donation-page', [OrganizationController::class, 'organizationData']);
 Route::get('/donation-view/{id}', [OrganizationController::class, 'orgDetail']);
+
+Route::get('/aboutus-page', [AboutusController::class, 'aboutus'])->name('aboutus');
 
 Route::group(['middleware'  => ['isUser']], function () {
     Route::post('/user/{id}/rate', [RateAndReviewController::class, 'addRating'])->name('user-rate');
