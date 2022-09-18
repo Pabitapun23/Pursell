@@ -10,10 +10,24 @@ use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('chatdisplay');
+        //dd($id);
+
+
+        $chat = DB::table('chats')
+            ->where(function ($q) {
+                $q->where('chats.sender_id', Auth::user()->id)->orWhere('chats.reciever_id', Auth::user()->id);
+            })
+            ->where(function ($q) use ($id) {
+                $q->where('chats.sender_id', $id)
+                    ->orWhere('chats.reciever_id', $id);
+            })
+            ->get();
+        // dd($chat);
+        return view('chatdisplay', ['chats' => $chat]);
     }
+
     public function chat(Request $request)
     {
         //dd($request->all());

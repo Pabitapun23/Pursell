@@ -66,6 +66,7 @@
     ->groupBy('sender_id')
     ->get();
 
+
     @endphp
     @endauth
     <div id="app">
@@ -192,7 +193,7 @@
                                 @foreach ($chat as $chat)
 
                                 <li class="dropdown-menu-element">
-                                    <a class="dropdown-item" href="{{ route('getchat') }}" style="background-color: white;">{{ $chat->name }} sent you message
+                                    <a class="dropdown-item" href="{{ route('getchat',$chat->id) }}" style="background-color: white;">{{ $chat->name }} sent you message
                                     </a>
                                 </li>
 

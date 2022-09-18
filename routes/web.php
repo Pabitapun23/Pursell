@@ -67,7 +67,7 @@ Route::get('/sender', function () {
 Route::post('/sender', [TestController::class, 'test'])->name('test');
 
 Route::post('/chat', [ChatController::class, 'chat'])->name('chat');
-Route::get('getchat', [ChatController::class, 'index'])->name('getchat');
+Route::get('getchat/{id}', [ChatController::class, 'index'])->name('getchat');
 
 Route::get('wishlist', [WishlistController::class, 'index'])->name('wishlist');
 
@@ -95,6 +95,9 @@ Route::get('deletepost/{id}', [ProfileController::class, 'deletepost'])->name('d
 Route::get('editpost/{id}',  [ProfileController::class, 'showinForm'])->name('editpost');
 Route::post('editaction/{id}', [ProfileController::class, 'updatepost'])->name('updatepost');
 Route::post('profileimg', [ProfileController::class, 'userprofile'])->name('profileimg');
+
+Route::post('editinfo', [ProfileController::class, 'editprofile'])->name('updateprofile');
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

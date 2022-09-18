@@ -156,4 +156,19 @@ class ProfileController extends Controller
         $data->update();
         return redirect()->back();
     }
+
+
+
+    function editprofile(Request $request)
+    {
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        $name = $request->name;
+        $phone = $request->phone;
+        $data->name = $name;
+        $data->phoneno = $phone;
+
+        $data->update();
+        return redirect()->back();
+    }
 }
