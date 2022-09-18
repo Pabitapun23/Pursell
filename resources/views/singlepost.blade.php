@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="col-md-6 col-8 d-flex flex-column justify-content-end align-items-end mx-0">
                                         <div>
-                                            <h4 class=""><i class="fa-solid fa-money-bill" style="color:green;"></i>
+                                            <h4><i class="fa-solid fa-money-bill" style="color:green;"></i>
                                                 Rs.{{ $post->price }}
                                             </h4>
                                         </div>

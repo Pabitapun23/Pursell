@@ -22,7 +22,7 @@
 
         <!-- Search Result div -->
 
-        <div class="container-fluid mb-5 mt-3" style="overflow: hidden;">
+        <div class="container-fluid mb-5 mt-3 px-0" style="overflow: hidden;">
 
             {{-- Desktop View --}}
             <div class="d-none d-md-block">
@@ -49,35 +49,37 @@
                                                         @endforeach
                                                     </div>
 
-                                                    <div class="col-lg-9 col-12">
-                                                        <div class="card-body">
+                                                    <div
+                                                        class="col-lg-9 col-12 d-flex flex-column justify-content-end pt-0">
+                                                        <div class="card-body pt-0">
                                                             <h4 class="card-title">{{ $data->title }}</h4>
                                                             <p class="card-text">{{ $data->description }}
                                                             </p>
-                                                            <ul class="list-group list-group-horizontal ">
-                                                                <li class="list-group-item border-0"
-                                                                    style="font-weight: bolder;"><i
+                                                            <ul class="list-group list-group-horizontal">
+                                                                <li class="list-group-item border-0"><i
                                                                         class="fa-solid fa-money-bill-wave" name="price"
-                                                                        style="margin-right: 4px;"></i>Price
-                                                                    : {{ $data->price }}</li>
-
-                                                                <li class="list-group-item border-0" name="condition"
-                                                                    style="font-weight: bolder;">
-                                                                    Condition:
-                                                                    {{ $data->condition }}
+                                                                        style="margin-right: 4px;"></i>Price: <br>
+                                                                    <span style="color: gray;"> {{ $data->price }} </span>
                                                                 </li>
-                                                                <li class="list-group-item border-0" name="negotiable"
-                                                                    style="font-weight: bolder;">
-                                                                    Negotiable:
-                                                                    @if ($data->negotiable == 0)
-                                                                        <p>No</p>
-                                                                    @else
-                                                                        <p>Yes</p>
-                                                                    @endif
+
+                                                                <li class="list-group-item border-0" name="condition">
+                                                                    Condition: <br> <span style="color: gray;">
+                                                                        {{ $data->condition }} </span>
+                                                                </li>
+                                                                <li class="list-group-item border-0" name="negotiable">
+                                                                    Negotiable: <br> <span style="color: gray;">
+                                                                        @if ($data->negotiable == 0)
+                                                                            No
+                                                                        @else
+                                                                            Yes
+                                                                        @endif
+                                                                    </span>
                                                                 </li>
                                                             </ul>
-                                                            <hr>
-                                                            <ul class="list-group list-group-horizontal ">
+                                                        </div>
+                                                        <div class="card-footer mb-2 py-0 px-3 ms-5 me-4"
+                                                            style="background-color: white;">
+                                                            <ul class="list-group list-group-horizontal">
                                                                 <li class="list-group-item border-0" name="username"
                                                                     style="color: grey;"><i class="fa-regular fa-user"
                                                                         style="margin-right: 8px;"></i>{{ $data->user->name }}
@@ -99,6 +101,7 @@
                                                                         <input type="hidden" name="id" id="postid"
                                                                             value="{{ $data->id }}">
                                                                     @endif
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -235,43 +238,50 @@
                         <hr>
                         @if ($posts != null && count($posts) > 0)
                             @foreach ($posts as $data)
-                                <div class="col-lg-12 col-sm-12">
+                                <div class="col-lg-12 col-sm-12 px-0">
                                     <a href="{{ url('singlepost/' . $data->id) }}"
                                         style="text-decoration: none; color:black;">
                                         <div class="card mx-0" id="post">
-                                            @foreach ($data->images->take(1) as $img)
-                                                <div class="img-square-wrapper justify-content-center">
-                                                    <img class="responsive" src="{{ asset($img->image) }}"
-                                                        name="img" alt="Card image cap">
-                                                </div>
-                                            @endforeach
+                                            <div
+                                                class="card-header p-0 position-relative mt-3 mx-3 z-index-2 bg-transparent">
+                                                <div class="d-flex position-relative owl-carousel owl-theme">
+                                                    @foreach ($data->images->take(1) as $img)
+                                                        <div class="img-square-wrapper justify-content-center">
+                                                            <img class="w-100 d-block" src="{{ asset($img->image) }}"
+                                                                name="img" alt="Card image cap" alt="Slide Image"
+                                                                height="280vh" width="100%">
 
-                                            <div class="card-body ">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="card-body ms-0">
                                                 <h4 class="card-title">{{ $data->title }}</h4>
                                                 <p class="card-text">{{ $data->description }}
                                                 </p>
-                                                <ul class="list-group list-group-horizontal ">
-                                                    <li class="list-group-item border-0" style="font-weight: bolder;"><i
-                                                            class="fa-solid fa-money-bill-wave" name="price"
-                                                            style="margin-right: 4px;"></i>Price
-                                                        : {{ $data->price }}</li>
-
-                                                    <li class="list-group-item border-0" name="condition"
-                                                        style="font-weight: bolder;">
-                                                        Condition:
-                                                        {{ $data->condition }}
+                                                <ul class="list-group">
+                                                    <li class="list-group-item border-0">
+                                                        <i class="fa-solid fa-money-bill-wave" name="price"
+                                                            style="margin-right: 4px;"></i>Price: <span
+                                                            style="color: gray;"> {{ $data->price }} </span>
                                                     </li>
-                                                    <li class="list-group-item border-0" name="negotiable"
-                                                        style="font-weight: bolder;">
-                                                        Negotiable:
-                                                        @if ($data->negotiable == 0)
-                                                            <p>No</p>
-                                                        @else
-                                                            <p>Yes</p>
-                                                        @endif
+
+                                                    <li class="list-group-item border-0" name="condition">
+                                                        Condition: <span style="color: gray;"> {{ $data->condition }}
+                                                        </span>
+                                                    </li>
+                                                    <li class="list-group-item border-0" name="negotiable">
+                                                        Negotiable: <span style="color: gray;">
+                                                            @if ($data->negotiable == 0)
+                                                                No
+                                                            @else
+                                                                Yes
+                                                            @endif
+                                                        </span>
                                                     </li>
                                                 </ul>
-                                                <hr>
+                                            </div>
+                                            <div class="card-footer mb-2 py-0" style="background-color: white;">
                                                 <ul class="list-group list-group-horizontal ">
                                                     <li class="list-group-item border-0" name="username"
                                                         style="color: grey;"><i class="fa-regular fa-user"
@@ -292,10 +302,12 @@
                                                             <input type="hidden" name="id" id="postid"
                                                                 value="{{ $data->id }}">
                                                         @endif
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
-                                </div></a>
+                                    </a>
+                                </div>
                             @endforeach
                         @else
                             <div class="col-lg-6 col-12 mx-2">
@@ -412,6 +424,7 @@
             </div>
         </div>
 
+
         <!-- footer -->
         <div class="footer-basic">
             <footer>
@@ -427,7 +440,7 @@
                 <p class="copyright">PURSELL © 2021</p>
             </footer>
         </div>
-
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
             integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
         </script>
