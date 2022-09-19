@@ -108,8 +108,10 @@
                         </p>
                         @auth
                         @if (auth()->user()->id != $post->user->id)
-                        <button class="py-2 px-3 mb-4 btnad rounded" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="color: white; background-color:#D02020;">
-                            <i class="fa-solid fa-comments"></i> Chat
+                        <button class="py-2 px-3 mb-4 btnad rounded" type="button" style="color: white; background-color:#D02020;">
+                            <a href="{{ route('getchat', $post->user->id) }}" style="text-decoration:none; color:white;">
+                                <i class="fa-solid fa-comments"></i> Chat
+                            </a>
                         </button>
 
                         <button id="wishlistBtn" class="py-2 px-1 float-end" style="border:none; background-color:white;">
@@ -123,47 +125,7 @@
                 </div>
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Chat with Ads Owner</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <section style="background-color: #eee;">
-                            <div class="container">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col">
-                                        <div class="card" id="chat1" style="border-radius: 15px;">
-                                            <form action="{{ route('chat', $post->id) }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="id" id="id" value="{{ $post->id }}">
-                                                <div class="card-body" id="msgdisplay" style="position: relative; height: 400px;overflow:scroll;overflow-x: hidden;">
-                                                </div>
-                                                <div class="card-footer row text-muted d-flex justify-content-start align-items-center p-3">
-                                                    <div class="col-2">
-                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3" style="width: 45px; height: 100%;">
-                                                    </div>
-                                                    <div class="col-8">
-                                                        <input type="text" class="form-control form-control-lg" name="text" id="text" placeholder="Type message">
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <button type="submit" class="btn btn-outline-info" id="submitButton">Send</button>
-                                                    </div>
 
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-lg-6 col-md-6 col-12 ">
                 <div class="card mt-2" style="width: 100%; background-color: #FDFDFD; margin-top: 40px;">
@@ -255,9 +217,8 @@
                                             <br>
                                             <br>
                                             <!-- comment ko display ko lai -->
-                                            <div class="commentsec">
-                                                <p class="alertcomment" style="background-color: #D4EDDA; padding-left:20px; font-style:italic;">
-                                                </p>
+                                            <div class="commentsec" id="commentdisplay">
+
                                                 @foreach ($post->comments as $comment)
                                                 <div class="border rounded bg-body my-2 ms-2">
                                                     <div class="text">
@@ -411,25 +372,7 @@
             var comment = $('#comment').val();
             var id = $('#id').val();
 
-            // $.ajax({
-            //     type: 'POST',
-            //     dataType: 'json',
-            //     data: {
-            //         comment: comment,
-            //         _token: '{{ csrf_token() }}'
-            //     },
-            //     url: '/singlepost/' + id,
-            //     success: function(data) {
-            //         console.log(data.html);
-            //         // $('#commentdisplay').val("");
-            //         // $('#commentdisplay').val(data);
-            //         // console.log('data saved');
-            //     },
-            //     error: function(error) {
-            //         console.log(error);
-            //     }
 
-            // })
             $.ajax({
                 type: "post",
                 url: '/singlepost/' + id,
@@ -439,14 +382,7 @@
                 },
                 success: function(data) {
                     $('#comment').val();
-                    // alert("comment added successfully");
 
-                    // console.log(comment);
-                    // $('.alertcomment').html(data.success);
-
-                    // $('.commentname').html(data.name);
-                    // $('.commentdate').html(data.date);
-                    // $('.newcomment').append(comment);
                     $('#commentdisplay').prepend(' <p class="alertcomment" style="background-color: #D4EDDA; padding-left:20px; font-style:italic;">' + data.success + '</p><div class="border rounded bg-body my-2 ms-2" id="commentdisplay"> <div class="text">  <p class="pt-3 mb-0" style="font-size:18px; font-weight:bold;">' + data.name + '</p> </a> <p class="mt-1">' + comment + '</p> </div> </div> <p style="font-style: italic; font-size:15px; color:gray; float:right;">' + data.date + '</p> <br>')
 
 
@@ -458,6 +394,44 @@
         })
     });
 </script>
+
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF_TOKEN': $('meta[name="csrf_token"]').attr('content')
+        }
+
+    });
+
+
+
+    //add comment function by id
+    $('#chatPop').click(function(e) {
+        e.preventDefault();
+        // alert(1);
+        var postId = $('#id').val();
+        $.ajax({
+            type: "post",
+            url: '/getchat/' + postId,
+            data: {
+                postId: postId,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(data) {
+                // alert(data);
+                console.log(data);
+
+
+            },
+
+
+        });
+
+
+    });
+</script>
+
 
 <script>
     $.ajaxSetup({

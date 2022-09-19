@@ -59,6 +59,9 @@ class SinglePostController extends Controller
         $relatedpost = Post::with('images', 'user')->where('category_id', $categoryid)->where('id', '!=', $postId->post_id)->get();
 
 
+
+
+
         return view('singlepost', ['posts' => $posts, 'relatedpost' => $relatedpost]);
     }
 
@@ -67,6 +70,4 @@ class SinglePostController extends Controller
         DB::table('notifications')->where('owner_id', Auth::user()->id)->update(['read' => 1]);
         return redirect()->back();
     }
-
-   
 }

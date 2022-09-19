@@ -96,6 +96,9 @@ Route::get('editpost/{id}',  [ProfileController::class, 'showinForm'])->name('ed
 Route::post('editaction/{id}', [ProfileController::class, 'updatepost'])->name('updatepost');
 Route::post('profileimg', [ProfileController::class, 'userprofile'])->name('profileimg');
 
+Route::post('chatpop', [ChatController::class, 'chatFetch'])->name('chatpop');
+
+
 Route::post('editinfo', [ProfileController::class, 'editprofile'])->name('updateprofile');
 
 Auth::routes(['verify' => true]);

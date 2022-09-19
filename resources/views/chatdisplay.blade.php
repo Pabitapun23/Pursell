@@ -53,19 +53,29 @@
                 <div class="card shadow" id="chat1" style="border-radius: 15px;">
                     <form action="" method="POST">
                         @csrf
-                        <input type="hidden" name="id" id="id" value="3">
+                        <input type="hidden" name="id" id="id" value="4">
+
+
+                        <input type="hidden" name="userId" id="userId" value="{{$user_id}}">
 
                         <div class=" card-body" id="msgdisplay" style="position: relative; height: 400px;overflow:scroll;overflow-x: hidden;">
 
                             @foreach($chats as $chat)
                             @if($chat->sender_id == Auth::user()->id)
                             <div class="d-flex flex-row justify-content-end mb-4">
+
                                 <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
                                     <p class="small mb-0 ">
                                         {{$chat->message}}
                                     </p>
                                 </div>
                                 <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                                <!-- @if (Auth::user()->profileimg == null)
+                                <img src="{{ URL::asset('/images/user.png') }}" alt="avatar 3" class="rounded-circle ms-3" alt="avatar" class="rounded-circle ms-3" style="width:50px;height:50px;object-fit:cover;">
+                                @else
+                                <img src="/postimage/{{Auth::user()->profileimg}}" alt="avatar 3" class="rounded-circle ms-3" alt="avatar" class="rounded-circle ms-3" style="width:50px;height:50px;object-fit:cover;">
+
+                                @endif -->
                             </div>
                             @else
                             <div class="d-flex flex-row justify-content-start mb-4">
@@ -82,7 +92,11 @@
 
                         <div class="card-footer row text-muted d-flex justify-content-start align-items-center p-3">
                             <div class="col-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp" alt="avatar 3" style="width: 45px; height: 100%;">
+                                @if (Auth::user()->profileimg == null)
+                                <img src="{{ URL::asset('/images/user.png') }}" alt="avatar 3" class="rounded-circle ms-3" alt="avatar" class="rounded-circle ms-3" style="width:50px;height:50px;object-fit:cover;">
+                                @else
+                                <img src="/postimage/{{Auth::user()->profileimg}}" alt="avatar 3" class="rounded-circle ms-3" alt="avatar" class="rounded-circle ms-3" style="width:50px;height:50px;object-fit:cover;">
+                                @endif
                             </div>
                             <div class="col-lg-8 col-7 ps-1 pe-0">
                                 <input type="text" class="form-control form-control-lg" name="text" id="text" placeholder="Type message">
@@ -114,6 +128,8 @@
                 var text = $('#text').val();
                 console.log(text)
                 var id = $('#id').val();
+                var userId = $('#userId').val();
+                // alert(userId);
                 $.ajax({
                     type: "post",
                     // url: '/chat/' + id,
@@ -121,6 +137,7 @@
                     data: {
                         text: text,
                         id: id,
+                        userId: userId,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(data) {

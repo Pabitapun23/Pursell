@@ -33,7 +33,7 @@ class ResetPasswordController extends Controller
         if (Auth()->user()->role == 1) {
             return route('admin.dashboard');
         } elseif (Auth()->user()->role == 0) {
-            return route('profile');
+            return route('welcome');
         }
     }
 }

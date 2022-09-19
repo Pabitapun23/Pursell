@@ -12,7 +12,7 @@ class ChatController extends Controller
 {
     public function index($id)
     {
-        //dd($id);
+        // dd($id);
 
 
         $chat = DB::table('chats')
@@ -25,7 +25,7 @@ class ChatController extends Controller
             })
             ->get();
         // dd($chat);
-        return view('chatdisplay', ['chats' => $chat]);
+        return view('chatdisplay', ['chats' => $chat, 'user_id' => $id]);
     }
 
     public function chat(Request $request)
@@ -41,9 +41,7 @@ class ChatController extends Controller
         if ($ownerid != $userid) {
             $recieverId = $ownerid;
         } else {
-            $recieverId = DB::table('chats')->where('reciever_id', $ownerid)
-                ->where('sender_id', '!=', $ownerid)
-                ->first()->sender_id;
+            $recieverId = $request->userId;
         }
 
         $chats = new Chat();
@@ -55,5 +53,28 @@ class ChatController extends Controller
         $chats->save();
 
         event(new Message($text, $recieverId));
+    }
+
+    public function chatFetch(Request $request)
+    {
+        $postId = $request->postId;
+        $owner = DB::table('posts')->where('id', $postId)->first();
+        $ownerId = $owner->user_id;
+        $chat = DB::table('chats')
+            ->where(function ($q) {
+                $q->where('chats.sender_id', Auth::user()->id)->orWhere('chats.reciever_id', Auth::user()->id);
+            })
+            ->where(function ($q) use ($ownerId) {
+                $q->where('chats.sender_id', $ownerId)
+                    ->orWhere('chats.reciever_id', $ownerId);
+            })
+            ->get();
+        // $chats = $chat->toArray();
+
+
+        // dd($chat);
+
+        // return view('singlepost', ['chats' => $chat]);
+        return $chat;
     }
 }
