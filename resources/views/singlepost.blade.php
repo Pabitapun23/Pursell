@@ -57,7 +57,7 @@
                         <div class="d-flex position-relative owl-carousel owl-theme">
                             @foreach ($post->images as $img)
                             <div class="bg-gradient-primary shadow-primary border-radius-lg p-2">
-                                <img class="w-100 d-block" src="{{ asset($img->image) }}" alt="Slide Image" height="280vh" width="100%">
+                                <img class="w-100 d-block" src="{{ asset($img->image) }}" alt="Slide Image" height="280vh" width="100%" style="object-fit:cover">
                             </div>
                             @endforeach
                         </div>
@@ -98,7 +98,7 @@
                             <h5 class="card-title pt-3">{{ $post->user->name }}</h5>
                         </a>
                         <p class="btnotherad">
-                            <a href="{{ route('profile', $post->user->id) }}" style="text-decoration: none;color:gray ; font-size: 12px;">{{ $post->count() }}
+                            <a href="{{ route('profile', $post->user->id) }}" style="text-decoration: none;color:gray ; font-size: 12px;">{{ $post->user->count() }}
                                 Other Ads</a>
                         </p>
 
@@ -318,14 +318,14 @@
 <!-- custom JS code after importing jquery and owl -->
 <script>
     $('.owl-carousel').owlCarousel({
-        loop: true,
+        // loop: true,
         margin: 2,
 
         scrollbarType: "progress",
         dots: false,
-        autoplay: true,
-        smartSpeed: 1000,
-        autoplayTimeout: 2500,
+        // autoplay: true,
+        // smartSpeed: 1000,
+        // autoplayTimeout: 2500,
 
         responsive: {
 

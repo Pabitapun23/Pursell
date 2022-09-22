@@ -30,11 +30,13 @@ class ChatController extends Controller
 
     public function chat(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
 
         $postid = $request->id;
-        $post =  DB::table('posts')->where('id', $postid)->first();
-        $ownerid = DB::table('users')->where('id', $post->user_id)->first()->id;
+        // $post =  DB::table('posts')->where('id', $postid)->first();
+        // $ownerid = DB::table('users')->where('id', $post->user_id)->first()->id;
+
+        $ownerid = $request->userId;
         $userid = Auth::user()->id;
         $text = $request->text;
 

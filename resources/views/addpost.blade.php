@@ -49,11 +49,15 @@
 
         .remove {
             position: absolute;
+            height: 25px;
+            width: 25px;
+            border-radius: 50%;
             right: -10px;
             top: -10px;
             display: block;
             border: 1px solid black;
             color: white;
+            background-color: black;
             text-align: center;
             cursor: pointer;
         }
@@ -115,12 +119,13 @@
                                         <!-- <div class="form-row pt-2 mx-2 d-flex" id="preview">
                                                                                         <input class="form-control" type="file" id="formFile">
                                                                                     </div> -->
+                                        <div class="form-row pt-2 mx-2 d-flex" id="image_preview" type="hidden"></div>
+
 
                                         <div class="form-row pt-2 mx-2" id="container_image">
                                             <div class="image-row">
                                                 <div class="col-lg-12 col-12">
                                                     <div class="photo_item justify-content-center">
-                                                        <div id="image_preview" type="hidden"></div>
                                                         <label for="files" class="select-img">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -345,13 +350,14 @@
         </div>
     </footer>
 
-    <script>
+    <script type="text/Javascript">
         $(document).ready(function() {
             if (window.File && window.FileList && window.FileReader) {
 
                 $("#files").on("change", function(e) {
                     var files = e.target.files,
                         filesLength = files.length;
+                        
                     for (var i = 0; i < filesLength; i++) {
                         var f = files[i]
                         var fileReader = new FileReader();
@@ -360,14 +366,26 @@
                             $("<span class=\"pip\">" +
                                 "<img class=\"imageThumb\" src=\"" + e.target.result +
                                 "\" title=\"" + file.name + "\"/>" +
-                                "<br/><span class=\"remove\">Remove</span>" +
+                                "<br/><span class=\"remove\">X</span>" +
                                 "</span>").insertAfter("#image_preview");
+
                             $(".remove").click(function() {
+                                // let arrElem = document.getElementById("files");
+                                // let arrObj = arrElem.files;
+                                // const arr = Array.from(arrObj);
+                                // arr.pop();
+                                // console.log(arr);
+                                // console.log(arr)
+                                // arr.pop();
                                 $(this).parent(".pip").remove();
+                                // files.pop();
 
 
                             });
+
+
                         });
+
                         fileReader.readAsDataURL(f);
                     }
                 });

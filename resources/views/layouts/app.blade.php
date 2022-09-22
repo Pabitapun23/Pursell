@@ -95,7 +95,7 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown_nav">
+            <!-- <li class="nav-item dropdown_nav">
                 <a class="nav-link dropdown-toggle active text-capitalize d-flex flex-column justify-content-center align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <button class="noti">
                         @if( $notification_count ==0 )
@@ -117,6 +117,34 @@
                     <li class="dropdown-menu-element"><a class="dropdown-item" href="{{ route('notifyseen', $comment->id) }}" style="background-color: white;">{{ $comment->name }}
                             commented on your post </a></li>
                     @endforeach
+                </ul>
+            </li> -->
+
+
+
+            <li class="nav-item px-2 dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="noti">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#F53535" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                        </svg>
+                        @if( $notification_count ==0 )
+                        <span class="badge badge-danger navbar-badge notification-count rounded-circle"></span>
+                        @else
+                        <span class="badge badge-danger navbar-badge notification-count rounded-circle">{{ $notification_count }}</span>
+                        @endif
+                    </button>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end position-absolute px-3 py-3" aria-labelledby="navbarDropdown" style="background-color: white; padding:5px;">
+
+
+                    @foreach ($detail as $comment)
+
+                    <li class="dropdown-menu-element"><a class="dropdown-item" href="{{ route('notifyseen', $comment->id) }}" style="background-color: white;">{{ $comment->name }}
+                            commented on your post </a></li>
+                    @endforeach
+                    <li class="dropdown-menu-element"><a class="dropdown-item py-2" href="{{ route('read') }}" style="background-color: white;">
+                            Mark all as read</a></li>
                 </ul>
             </li>
             @endauth

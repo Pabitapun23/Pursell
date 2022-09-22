@@ -92,11 +92,7 @@
 
                         <div class="card-footer row text-muted d-flex justify-content-start align-items-center p-3">
                             <div class="col-2">
-                                @if (Auth::user()->profileimg == null)
-                                <img src="{{ URL::asset('/images/user.png') }}" alt="avatar 3" class="rounded-circle ms-3" alt="avatar" class="rounded-circle ms-3" style="width:50px;height:50px;object-fit:cover;">
-                                @else
-                                <img src="/postimage/{{Auth::user()->profileimg}}" alt="avatar 3" class="rounded-circle ms-3" alt="avatar" class="rounded-circle ms-3" style="width:50px;height:50px;object-fit:cover;">
-                                @endif
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
                             </div>
                             <div class="col-lg-8 col-7 ps-1 pe-0">
                                 <input type="text" class="form-control form-control-lg" name="text" id="text" placeholder="Type message">

@@ -67,9 +67,9 @@ class LoginController extends Controller
                 Cookie::queue('useremail', $request->email, 1440);
                 Cookie::queue('userpass', $request->password, 1440);
             }
-            if (auth()->user()->role == 1) {
+            if (auth()->user()->block_status == 1) {
                 return redirect()->route('admin.dashboard');
-            } elseif (auth()->user()->role == 0) {
+            } elseif (auth()->user()->block_status == 0) {
                 return redirect()->route('welcome');
                 // return view('welcome');
             }

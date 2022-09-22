@@ -25,9 +25,10 @@ class RedirectIfAuthenticated
             // if (Auth::guard($guard)->check()) {
             //     return redirect(RouteServiceProvider::HOME);
             // }
-            if (Auth::guard($guard)->check() && Auth::user()->role == 1) {
-                return redirect()->route('admin.dashboard');
-            } elseif (Auth::guard($guard)->check() && Auth::user()->role == 0) {
+            if (Auth::guard($guard)->check() && Auth::user()->block_status == 1) {
+                Auth::logout();
+                return redirect()->route('login')->with('fail', 'Oppes! You have been blocked.Contact the administrator');
+            } elseif (Auth::guard($guard)->check() && Auth::user()->block_status == 0) {
                 return redirect()->route('user.dashboard');
             }
         }

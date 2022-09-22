@@ -48,7 +48,7 @@ class PostController extends Controller
 
     public function addpost(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $request->validate([
             'title' => 'required|string|max:255',
             //'images' => 'required',
@@ -61,12 +61,12 @@ class PostController extends Controller
             'usedfor' => 'required|string|max:255',
 
             'price' => 'required|numeric|min:10',
-            'date' => 'required|date_format:Y-m-d'
+            'party' => 'required|date_format:Y-m-d'
 
 
         ]);
 
-        //dd($request->all());
+
         $post = new Post();
 
         $post->title = $request->title;
@@ -96,7 +96,7 @@ class PostController extends Controller
         }
         $post->price = $request->price;
 
-        $post->expirydate = $request->date;
+        $post->expirydate = $request->party;
 
         $post->user_id  = Auth::user()->id;
 
