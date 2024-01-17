@@ -22,6 +22,6 @@ We used the following tools and technologies to develop this app:
 * Uploading and managing posts (CRUD)
 * Favourite System
 * Chatting System
-* Mulitple image uploading system
+* Multiple image uploading system
 * Rating and reviewing system
 * Authentication System (Sign up/Login)
