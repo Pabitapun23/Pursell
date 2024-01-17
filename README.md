@@ -11,7 +11,7 @@ A Web Application for an online marketplace that enables users to purchase or se
 
 ## Technologies
 We used the following tools and technologies to develop this app:
-* Frontend - Bootstrap, HTML, CSS, Javascript
+* Frontend - Bootstrap, Blade, HTML, CSS, Javascript
 * Backend - Laravel
 * Database - Localhost (XAMPP, APACHE)
    
