@@ -9,7 +9,7 @@ A Web Application for an online marketplace that enables users to purchase or se
 * Bikalpa K.C.
 
 ## Project Demo
-<!-- ![](https://github.com/Pabitapun23/Pursell/blob/main/public/images/Pursell%20gif.gif) -->
+![](https://github.com/Pabitapun23/Pursell/blob/main/public/images/Pursell%20gif.gif)
 
 ## Technologies
 We used the following tools and technologies to develop this app:
